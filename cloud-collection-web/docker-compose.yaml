@@ -6,4 +6,5 @@ services:
     expose:
       - "8081"
     command: spring-boot:run
+    image: registry.cn-hangzhou.aliyuncs.com/geekluxun-myapp/cloud-collection-web:latest
    
