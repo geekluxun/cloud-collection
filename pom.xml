@@ -7,8 +7,8 @@
 	<artifactId>cloud-collection</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>cloud-collection-core-service-client</module>
-		<module>cloud-collection-user-service-client</module>
+		<!--<module>cloud-collection-core-service-client</module>-->
+		<!--<module>cloud-collection-user-service-client</module>-->
 	</modules>
 	<packaging>pom</packaging>
 
