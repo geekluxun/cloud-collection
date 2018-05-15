@@ -26,7 +26,7 @@ public class HomeController {
     public Object helloWorld(){
         Map response = new HashMap(10);
         
-        response.put("code", "9999");
+        response.put("code", "12345");
         response.put("msg", "success");
         return  response;
     }
