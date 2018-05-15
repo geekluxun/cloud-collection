@@ -107,7 +107,7 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.0.0</version>
 				<configuration>
-					<imageName>greateapp</imageName>
+					<imageName>cloud-collection-web</imageName>
 					<dockerDirectory>${project.basedir}</dockerDirectory>
 					<pushImage>false</pushImage>
 					<resources>
