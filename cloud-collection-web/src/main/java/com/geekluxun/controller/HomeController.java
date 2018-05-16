@@ -46,7 +46,7 @@ public class HomeController {
         logger.info("core service test!!!");
 
         RestTemplate restTemplate = new RestTemplate();
-        Object response2  = restTemplate.postForObject("http://restserver.local:8083/test", null, Object.class);
+        Object response2  = restTemplate.postForObject("http://cloud-collection-core-service:8083/test", null, Object.class);
         response.put("code", "111888");
         response.put("msg", "success");
         return  response;
