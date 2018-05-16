@@ -17,15 +17,13 @@ cloud-collection-web:
   memswap_reservation: 0
   kernel_memory: 0
   external_links: 
-    - "restserver.local"
+    - "cloud-collection-core-service.local"
   name: cloud-collection-web
 
 #核心服务  
 cloud-collection-core-service:
   image: >-
     registry-vpc.cn-hangzhou.aliyuncs.com/geekluxun-myapp/cloud-collection-core-service:latest
-  ports: 
-    - '8083'
   restart: always
   hostname: cloud-collection-core-service
   environment:

@@ -42,13 +42,13 @@ public class HomeController {
     @RequestMapping("core")
     @ResponseBody
     public Object testCoreSevie(){
-        String coreServieUrl = "cloud-collection-core-service.local";
+        String coreServieUrl = "http://cloud-collection-core-service.local/test";
         Map response = new HashMap(10);
         logger.info("core service test!!!");
 
         RestTemplate restTemplate = new RestTemplate();
         //Object response2  = restTemplate.postForObject("http://cloud-collection-core-service:8083/test", null, Object.class);
-        Object response2  = restTemplate.postForObject(coreServieUrl + "/test", null, Object.class);
+        Object response2  = restTemplate.postForObject(coreServieUrl, null, Object.class);
 
         response.put("code", "111888");
         response.put("msg", "success");
