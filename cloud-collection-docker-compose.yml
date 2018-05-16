@@ -24,13 +24,16 @@ cloud-collection-web:
 cloud-collection-core-service:
   image: >-
     registry-vpc.cn-hangzhou.aliyuncs.com/geekluxun-myapp/cloud-collection-core-service:latest
+  ports: 
+    - '8083'
   restart: always
+  hostname: cloud-collection-core-service
   environment:
     - LANG=C.UTF-8
     - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
   labels:
     aliyun.scale: '1'
-    aliyun.routing.port_8083: restserver.local
+    aliyun.routing.port_8083: cloud-collection-core-service.local
   volumes:
     - '/tmp/data:/data'
   memswap_limit: 0
