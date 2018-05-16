@@ -1,5 +1,7 @@
 package com.geekluxun.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,11 +22,13 @@ import java.util.Map;
 @RestController
 public class HomeController {
     
+    Logger logger = LoggerFactory.getLogger(getClass());
     
     @RequestMapping("test")
     @ResponseBody
     public Object helloWorld(){
         Map response = new HashMap(10);
+        logger.info("hello test!!!");
         
         response.put("code", "12345");
         response.put("msg", "success");
