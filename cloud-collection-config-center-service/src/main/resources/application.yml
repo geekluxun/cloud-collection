@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: cloud-collection-config-center-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/geekluxun/cloud-collection # 配置git仓库的地址
+          search-paths: config-repo/cloud-collection-core-service # git仓库地址下的相对地址，可以配置多个，用,分割。
+          username: geekluxun@163.com
+          password: geekluxun.33
+server:
+  port: 12000
+  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

@@ -4,13 +4,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 /**
- * Created by luxun on 2018/5/16.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
+ *
+ * @Author: luxun
+ * @Date: 2018-07-27 17:45
+ * @Description:
+ * @Others:
  */
 
 @Configuration
 @ImportResource(locations = {
-        "classpath:spring/dubbo-client.xml",
-        "classpath:spring/dubbo-service.xml"
-        })
+//        "classpath:spring/dubbo-client.xml",
+//        "classpath:spring/dubbo-service.xml"
+})
 public class SpringConfig {
 }

@@ -1,41 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.geekluxun</groupId>
-	<artifactId>cloud-collection-core-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <groupId>com.geekluxun</groupId>
+    <artifactId>cloud-collection-core-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<name>cloud-collection-core-service</name>
-	<description>cloud-collection-core-service for Spring Boot</description>
+    <name>cloud-collection-core-service</name>
+    <description>核心服务</description>
 
-	<parent>
-		<groupId>com.geekluxun</groupId>
-		<artifactId>cloud-collection</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<!--<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-	</parent>
+    <parent>
+        <groupId>com.geekluxun</groupId>
+        <artifactId>cloud-collection</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.geekluxun</groupId>
-			<artifactId>cloud-collection-core-service-client</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
+    </properties>
 
-	<build>
-		<finalName>cloud-collection-core-service</finalName>
+    <dependencies>
+        <dependency>
+            <groupId>com.geekluxun</groupId>
+            <artifactId>cloud-collection-core-service-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
-	</build>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>cloud-collection-core-service</finalName>
+    </build>
 
 
 </project>

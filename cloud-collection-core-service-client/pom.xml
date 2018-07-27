@@ -11,11 +11,9 @@
     <packaging>jar</packaging>
 
     <name>cloud-collection-core-service-client</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <description>核心服务接口</description>
 
     <properties>
-
     </properties>
 
     <dependencies>
