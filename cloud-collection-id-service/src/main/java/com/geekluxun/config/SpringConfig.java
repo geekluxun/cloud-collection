@@ -23,7 +23,7 @@ public class SpringConfig {
     @Bean(initMethod = "init",name = "ipConfigurableMachineIdProvider")
     public IpConfigurableMachineIdProvider springDemoConfig() {
         IpConfigurableMachineIdProvider provider = new IpConfigurableMachineIdProvider();
-        provider.setIps("172.16.16.227");
+        provider.setIps("192.168.0.103");
         return provider;
     }
 }

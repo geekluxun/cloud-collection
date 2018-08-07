@@ -79,4 +79,9 @@
       update_time = #{updateTime,jdbcType=DATE}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="count" resultType="int">
+    SELECT count(*)
+      FROM t_order;
+  </select>
 </mapper>

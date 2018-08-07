@@ -7,8 +7,10 @@ import com.geekluxun.service.IdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
@@ -29,13 +31,16 @@ public class ShadingController {
     IdService idService;
     
     @RequestMapping("/save")
-    public void save(){
+    @ResponseBody
+    public Object save(){
         TOrder order = new TOrder();
-        order.setId(idService.genId());
-        order.setUserId(idService.genId());
+        order.setId(123L);
+        order.setUserId(456L);
         order.setCreateTime(new Date());
         order.setUpdateTime(new Date());
-        tOrderMapper.insert(order);
-        DruidDataSource druidDataSource;
+        tOrderMapper.insertSelective(order);
+        order = tOrderMapper.selectByPrimaryKey(1L);
+        int count = tOrderMapper.count();
+        return new HashMap<>();
     }
 }
