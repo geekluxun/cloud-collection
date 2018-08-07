@@ -1,5 +1,6 @@
 package com.geekluxun.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
@@ -14,7 +15,10 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ImportResource(locations = {
-//        "classpath:spring/dubbo-client.xml"
+        "classpath:spring/dubbo-client.xml"
 })
 public class SpringConfig {
+
+
+    
 }

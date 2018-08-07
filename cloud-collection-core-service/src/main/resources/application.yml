@@ -1,3 +1,4 @@
+
 server:
   port: 8088
 
@@ -27,5 +28,95 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, hystrix.stream      
-        
+        include: refresh, hystrix.stream 
+dubbo:
+  registry:
+    protocol: zookeeper
+    address:  172.20.87.7:2181
+  protocol:
+    name: dubbo
+    threadpool: cached
+    port: 30017
+    timeout: 15000
+    
+# sharding jdbc 分片+ 读写分离    
+#dataSources:
+#  ds0: !!com.alibaba.druid.pool.DruidDataSource
+#    url: 'jdbc:mysql://116.62.63.81:3306/ds0'
+#    username: root
+#    password: geekluxun
+#  ds0_slave0: !!com.alibaba.druid.pool.DruidDataSource
+#      url: 'jdbc:mysql://116.62.63.81:3306/ds0_slave0'
+#      username: root
+#      password: geekluxun
+#  ds0_slave1: !!com.alibaba.druid.pool.DruidDataSource
+#      url: 'jdbc:mysql://116.62.63.81:3306/ds0_slave1'
+#      username: root
+#      password: geekluxun
+#  ds1: !!com.alibaba.druid.pool.DruidDataSource
+#    url: 'jdbc:mysql://116.62.63.81:3306/ds1'
+#    username: root
+#    password: geekluxun
+#  ds1_slave0: !!com.alibaba.druid.pool.DruidDataSource
+#        url: 'jdbc:mysql://116.62.63.81:3306/ds1_slave0'
+#        username: root
+#        password: geekluxun
+#  ds1_slave1: !!com.alibaba.druid.pool.DruidDataSource
+#        url: 'jdbc:mysql://116.62.63.81:3306/ds1_slave1'
+#        username: root
+#        password: geekluxun
+#
+#shardingRule:  
+#  tables:
+#    t_order: 
+#      actualDataNodes: ds${0..1}.t_order${0..1}
+#      tableStrategy: 
+#        inline:
+#          shardingColumn: order_id
+#          algorithmExpression: t_order${order_id % 2}
+#      keyGeneratorColumnName: order_id
+#    t_order_item:
+#      actualDataNodes: ds${0..1}.t_order_item${0..1}
+#      tableStrategy:
+#        inline:
+#          shardingColumn: order_id
+#          algorithmExpression: t_order_item${order_id % 2}  
+#  
+#  bindingTables:
+#    - t_order,t_order_item
+#  
+#  defaultDatabaseStrategy:
+#    inline:
+#      shardingColumn: user_id
+#      algorithmExpression: ds${user_id % 2}
+#  
+#  defaultTableStrategy:
+#    none:
+#  defaultKeyGeneratorClassName: io.shardingsphere.core.keygen.DefaultKeyGenerator
+#  
+#  masterSlaveRules:
+#      ms_ds0:
+#        masterDataSourceName: ds0
+#        slaveDataSourceNames:
+#          - ds0_slave0
+#          - ds0_slave1
+#        loadBalanceAlgorithmType: ROUND_ROBIN
+#        configMap:
+#          master-slave-key0: master-slave-value0
+#      ms_ds1:
+#        masterDataSourceName: ds1
+#        slaveDataSourceNames: 
+#          - ds1_slave0
+#          - ds1_slave1
+#        loadBalanceAlgorithmType: ROUND_ROBIN
+#        configMap:
+#          master-slave-key1: master-slave-value1
+#  props:
+#    sql.show: true    
+
+mybatis:
+  generator:
+    modelTargetPackage: com.geekluxun.entity
+    daoTargetPackage: com.geekluxun.dao    
+    mapperTargetPackage: sqlmapper
+debug: true   

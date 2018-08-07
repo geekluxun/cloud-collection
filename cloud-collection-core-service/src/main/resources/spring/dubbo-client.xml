@@ -7,7 +7,8 @@
 
     <dubbo:registry id="client" protocol="${dubbo.registry.protocol}"
                     address="${dubbo.registry.address}" group="dubbo-online" check="false"
-                    file="${user.home}/.dubbo-cache/cloud-collection-user-service"/>
+                    file="${user.home}/.dubbo-cache/cloud-collection-core-service"/>
 
+    <dubbo:reference id="idService" interface="com.geekluxun.service.IdService"/>
 
 </beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://code.alibabatech.com/schema/dubbo
+		http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="cloud-collection-id-service"/>
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 注册中心暴露服务地址-->
+    <dubbo:registry id="service" protocol="${dubbo.registry.protocol}"
+                    address="${dubbo.registry.address}" group="dubbo-online"
+                    check="false"/>
+    <!-- 使用dubbo协议在端口 暴露服务-->
+    <dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}"
+                    threadpool="${dubbo.protocol.threadpool}" threads="${dubbo.protocol.threads}"/>
+
+    <!--<dubbo:provider timeout="${dubbo.provider.timeout}" />-->
+
+    <!--<dubbo:consumer check="false" timeout="${dubbo.provider.timeout}"/>-->
+
+    <dubbo:service interface="com.geekluxun.service.IdService"
+                   class="com.geekluxun.service.impl.IdServiceImpl">
+    </dubbo:service>
+</beans>

@@ -1,0 +1,10 @@
+dubbo:
+  application: cloud-collection-id-service
+  registry:
+    protocol: zookeeper
+    address:  172.20.87.7:2181
+  protocol:
+    name: dubbo
+    threadpool: cached
+    port: 30017
+    timeout: 15000
