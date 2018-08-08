@@ -4,8 +4,8 @@
   <resultMap id="BaseResultMap" type="com.geekluxun.entity.TOrder">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="user_id" jdbcType="BIGINT" property="userId" />
-    <result column="create_time" jdbcType="DATE" property="createTime" />
-    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
     id, user_id, create_time, update_time
@@ -23,8 +23,8 @@
   <insert id="insert" parameterType="com.geekluxun.entity.TOrder">
     insert into t_order (id, user_id, create_time, 
       update_time)
-    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=DATE}, 
-      #{updateTime,jdbcType=DATE})
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.geekluxun.entity.TOrder">
     insert into t_order
@@ -50,10 +50,10 @@
         #{userId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=DATE},
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=DATE},
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -64,10 +64,10 @@
         user_id = #{userId,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=DATE},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=DATE},
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
@@ -75,13 +75,19 @@
   <update id="updateByPrimaryKey" parameterType="com.geekluxun.entity.TOrder">
     update t_order
     set user_id = #{userId,jdbcType=BIGINT},
-      create_time = #{createTime,jdbcType=DATE},
-      update_time = #{updateTime,jdbcType=DATE}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
 
   <select id="count" resultType="int">
     SELECT count(*)
       FROM t_order;
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from t_order
   </select>
 </mapper>

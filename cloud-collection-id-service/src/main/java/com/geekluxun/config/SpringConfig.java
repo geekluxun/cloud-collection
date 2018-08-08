@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
  *
@@ -23,7 +26,15 @@ public class SpringConfig {
     @Bean(initMethod = "init",name = "ipConfigurableMachineIdProvider")
     public IpConfigurableMachineIdProvider springDemoConfig() {
         IpConfigurableMachineIdProvider provider = new IpConfigurableMachineIdProvider();
-        provider.setIps("192.168.0.103");
+        String ip = "";
+        try {
+            InetAddress addr = InetAddress.getLocalHost();
+            ip = addr.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
+        provider.setIps(ip);
         return provider;
     }
 }
