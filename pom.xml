@@ -19,6 +19,7 @@
         <module>cloud-collection-hystrix-dashborad-service</module>
         <module>cloud-collection-id-service</module>
         <module>cloud-collection-id-service-client</module>
+        <module>cloud-collection-job-service</module>
     </modules>
     <packaging>pom</packaging>
 
