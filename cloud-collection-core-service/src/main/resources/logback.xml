@@ -8,6 +8,17 @@
             <charset class="java.nio.charset.Charset">UTF-8</charset>
         </encoder>
     </appender>
+
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <param name="Encoding" value="UTF-8"/>
+        <remoteHost>116.62.63.81</remoteHost>
+        <port>8031</port>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"applicationName":"cloud-collecion-core-service"}</customFields>
+        </encoder>
+    </appender>
+    
     <property name="filePath" value="/data/logs"/>
     <property name="project.name" value="cloud-collection-core-service"/>
 
@@ -38,7 +49,8 @@
     <root>
         <level value="debug"/>
         <appender-ref ref="STDOUT"/>
-        <appender-ref ref="rollingFileAppender"/>
+        <!--<appender-ref ref="rollingFileAppender"/>-->
+        <appender-ref ref="logstash" />
     </root>
 
 </configuration>

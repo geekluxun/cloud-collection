@@ -37,6 +37,8 @@ public class MainController {
     public Object test() {
         Map response = new HashMap(10);
         logger.info("test cloud collection core service");
+        logger.debug("hello debug!!!");
+
 
         response.put("code", "111333");
         response.put("msg", "success");
