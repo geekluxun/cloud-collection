@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ImportResource(locations = {
-        "classpath:spring/dubbo-client.xml"
+        //"classpath:spring/dubbo-client.xml"
 })
 public class SpringConfig {
 

@@ -1,9 +1,9 @@
 package com.geekluxun.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.geekluxun.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  * @Others:
  */
-@Service
+@Service(timeout = 5000)
 public class TestServiceImpl implements TestService {
     Logger logger = LoggerFactory.getLogger(getClass());
 

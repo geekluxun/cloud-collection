@@ -1,5 +1,6 @@
 package com.geekluxun;
 
+import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -27,6 +28,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableCircuitBreaker
 @EnableHystrixDashboard
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@DubboComponentScan(basePackages = "com.geekluxun")
 public class CloudCollectionWebApplication {
 
     public static void main(String[] args) {

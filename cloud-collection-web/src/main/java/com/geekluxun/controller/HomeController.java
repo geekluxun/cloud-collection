@@ -1,5 +1,6 @@
 package com.geekluxun.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.geekluxun.demo.thymeleaf.entity.Knowledge;
 import com.geekluxun.service.IdService;
@@ -32,9 +33,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-    
+
+    @Reference
     TestService testService;
-    @Autowired
+    @Reference
     IdService idService;        
 
     Logger logger = LoggerFactory.getLogger(getClass());
@@ -88,6 +90,11 @@ public class HomeController {
         long id = idService.genId();
         System.out.println("id:" + id);
         return "index";
+    }
+
+    @RequestMapping("/dubbo")
+    public void dubbo(){
+        testService.test();
     }
     
 }

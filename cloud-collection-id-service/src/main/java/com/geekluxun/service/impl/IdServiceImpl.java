@@ -1,15 +1,15 @@
 package com.geekluxun.service.impl;
 
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.geekluxun.dto.Id;
 import com.geekluxun.service.IdService;
 import com.geekluxun.service.impl.bean.IdType;
-import org.springframework.stereotype.Service;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-@Service
+@Service(timeout = 5000)
 public class IdServiceImpl extends AbstractIdServiceImpl implements IdService {
 	private long sequence = 0;
 

@@ -19,7 +19,7 @@ import java.net.UnknownHostException;
 @Configuration
 @ImportResource(locations = {
 //        "classpath:spring/dubbo-client.xml",
-        "classpath:spring/dubbo-service.xml"
+//        "classpath:spring/dubbo-service.xml"
 })
 public class SpringConfig {
 

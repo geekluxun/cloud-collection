@@ -1,6 +1,7 @@
 package com.geekluxun.demo.shadingjdbc;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.geekluxun.dao.TOrderItemMapper;
 import com.geekluxun.dao.TOrderMapper;
@@ -45,7 +46,8 @@ public class ShadingController {
     @Autowired
     TOrderItemMapper orderItemMapper;
     
-    @Autowired
+    //@Autowired
+    @Reference
     IdService idService;
     
     
