@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-07 16:21

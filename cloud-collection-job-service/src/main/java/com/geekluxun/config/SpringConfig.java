@@ -21,7 +21,7 @@ import org.springframework.context.annotation.ImportResource;
 import javax.sql.DataSource;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2018-08-09 9:18
