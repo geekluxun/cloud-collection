@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geekluxun.pagecollection.repo.dao.TCollectionMapper">
+    <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.repo.do.TCollection">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="collection_id" jdbcType="BIGINT" property="collectionId"/>
+        <result column="concurrency_version" jdbcType="INTEGER" property="concurrencyVersion"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="modify_time" jdbcType="DATE" property="modifyTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, collection_id, concurrency_version, create_time, modify_time
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_collection
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete
+        from t_collection
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+        insert into t_collection (id, collection_id, concurrency_version, create_time, modify_time)
+        values (#{id,jdbcType=BIGINT},
+                #{collectionId,jdbcType=BIGINT},
+                #{concurrencyVersion,jdbcType=INTEGER},
+                #{createTime,jdbcType=DATE},
+                #{modifyTime,jdbcType=DATE})
+    </insert>
+    <insert id="insertSelective" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+        insert into t_collection
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="collectionId != null">
+                collection_id,
+            </if>
+            <if test="concurrencyVersion != null">
+                concurrency_version,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="collectionId != null">
+                #{collectionId,jdbcType=BIGINT},
+            </if>
+            <if test="concurrencyVersion != null">
+                #{concurrencyVersion,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=DATE},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+        update t_collection
+        <set>
+            <if test="collectionId != null">
+                collection_id = #{collectionId,jdbcType=BIGINT},
+            </if>
+            <if test="concurrencyVersion != null">
+                concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=DATE},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=DATE},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+        update t_collection
+        set collection_id       = #{collectionId,jdbcType=BIGINT},
+            concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},
+            create_time         = #{createTime,jdbcType=DATE},
+            modify_time         = #{modifyTime,jdbcType=DATE}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

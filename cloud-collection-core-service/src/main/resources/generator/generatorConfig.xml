@@ -18,7 +18,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://116.62.63.81:3306/ds0"
+                        connectionURL="jdbc:mysql://116.62.63.81:3306/cloud_collection"
                         userId="root"
                         password="geekluxun">
         </jdbcConnection>
@@ -33,7 +33,19 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.geekluxun.dao"  targetProject="src/main/java"/>
 
         
-        <table tableName="t_order"
+        <table tableName="t_page"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="t_collection"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="t_collection_member"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

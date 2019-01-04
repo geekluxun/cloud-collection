@@ -22,5 +22,5 @@
     <dubbo:consumer check="false" timeout="${dubbo.provider.timeout}"/>
 
     <dubbo:service interface="com.geekluxun.service.TestService"
-                   class="com.geekluxun.service.impl.TestServiceImpl"></dubbo:service>
+                   class="com.geekluxun.service.impl.TestServiceImpl"/>
 </beans>
