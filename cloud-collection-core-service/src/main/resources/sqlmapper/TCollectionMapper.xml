@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.geekluxun.pagecollection.repo.dao.TCollectionMapper">
-    <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.repo.do.TCollection">
+    <resultMap id="BaseResultMap" type="com.geekluxun.entity.TCollection">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="collection_id" jdbcType="BIGINT" property="collectionId"/>
         <result column="concurrency_version" jdbcType="INTEGER" property="concurrencyVersion"/>
@@ -22,7 +22,7 @@
         from t_collection
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <insert id="insert" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+    <insert id="insert" parameterType="com.geekluxun.entity.TCollection">
         insert into t_collection (id, collection_id, concurrency_version, create_time, modify_time)
         values (#{id,jdbcType=BIGINT},
                 #{collectionId,jdbcType=BIGINT},
@@ -30,7 +30,7 @@
                 #{createTime,jdbcType=DATE},
                 #{modifyTime,jdbcType=DATE})
     </insert>
-    <insert id="insertSelective" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+    <insert id="insertSelective" parameterType="com.geekluxun.entity.TCollection">
         insert into t_collection
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -67,7 +67,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+    <update id="updateByPrimaryKeySelective" parameterType="com.geekluxun.entity.TCollection">
         update t_collection
         <set>
             <if test="collectionId != null">
@@ -85,7 +85,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.geekluxun.pagecollection.repo.do.TCollection">
+    <update id="updateByPrimaryKey" parameterType="com.geekluxun.entity.TCollection">
         update t_collection
         set collection_id       = #{collectionId,jdbcType=BIGINT},
             concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},

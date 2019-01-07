@@ -1,4 +1,4 @@
-package com.geekluxun.pagecollection.repo.DO;
+package com.geekluxun.entity;
 
 import java.util.Date;
 

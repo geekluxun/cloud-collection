@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.geekluxun.pagecollection.repo.dao.TCollectionMemberMapper">
-    <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.repo.DO.TCollectionMember">
+    <resultMap id="BaseResultMap" type="com.geekluxun.entity.TCollectionMember">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="member_id" jdbcType="BIGINT" property="memberId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -24,7 +24,7 @@
         from t_collection_member
         where id = #{id,jdbcType=BIGINT}
     </delete>
-    <insert id="insert" parameterType="com.geekluxun.pagecollection.repo.DO.TCollectionMember">
+    <insert id="insert" parameterType="com.geekluxun.entity.TCollectionMember">
         insert into t_collection_member (id, member_id, name, type, concurrency_version, create_time, modify_time)
         values (#{id,jdbcType=BIGINT},
                 #{memberId,jdbcType=BIGINT},
@@ -34,7 +34,7 @@
                 #{createTime,jdbcType=DATE},
                 #{modifyTime,jdbcType=DATE})
     </insert>
-    <insert id="insertSelective" parameterType="com.geekluxun.pagecollection.repo.DO.TCollectionMember">
+    <insert id="insertSelective" parameterType="com.geekluxun.entity.TCollectionMember">
         insert into t_collection_member
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -83,7 +83,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.geekluxun.pagecollection.repo.DO.TCollectionMember">
+    <update id="updateByPrimaryKeySelective" parameterType="com.geekluxun.entity.TCollectionMember">
         update t_collection_member
         <set>
             <if test="memberId != null">
@@ -107,7 +107,7 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.geekluxun.pagecollection.repo.DO.TCollectionMember">
+    <update id="updateByPrimaryKey" parameterType="com.geekluxun.entity.TCollectionMember">
         update t_collection_member
         set member_id           = #{memberId,jdbcType=BIGINT},
             name                = #{name,jdbcType=VARCHAR},

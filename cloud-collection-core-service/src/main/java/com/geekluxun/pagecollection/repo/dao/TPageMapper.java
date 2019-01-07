@@ -1,13 +1,14 @@
 package com.geekluxun.pagecollection.repo.dao;
 
-import com.geekluxun.pagecollection.repo.DO.TPage;
+import com.geekluxun.pagecollection.domain.entity.Page;
+import com.geekluxun.entity.TPage;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TPageMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(TPage record);
+    int insert(Page record);
 
     int insertSelective(TPage record);
 
@@ -16,4 +17,5 @@ public interface TPageMapper {
     int updateByPrimaryKeySelective(TPage record);
 
     int updateByPrimaryKey(TPage record);
+
 }

@@ -16,5 +16,10 @@ public class PageBrowse extends ValueObject {
     private int browseTotalCount;
     private Date lastBrowseTime;
     private boolean readed;
-    
+
+    public PageBrowse(int browseTotalCount, Date lastBrowseTime, boolean readed){
+        this.browseTotalCount = browseTotalCount;
+        this.lastBrowseTime = lastBrowseTime;
+        this.readed = readed;
+    }
 }
