@@ -84,6 +84,12 @@
         <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-jdbc-transaction-async-job</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.quartz-scheduler</groupId>
+                    <artifactId>quartz</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

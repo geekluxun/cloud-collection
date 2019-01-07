@@ -1,6 +1,7 @@
 package com.geekluxun.pagecollection.domain.valobj;
 
 import com.geekluxun.common.ValueObject;
+import lombok.Data;
 
 import java.util.Date;
 
@@ -12,6 +13,7 @@ import java.util.Date;
  * @Description:
  * @Other:
  */
+@Data
 public class PageBrowse extends ValueObject {
     private int browseTotalCount;
     private Date lastBrowseTime;

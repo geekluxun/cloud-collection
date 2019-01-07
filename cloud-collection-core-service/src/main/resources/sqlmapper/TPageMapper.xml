@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.geekluxun.pagecollection.repo.dao.TPageMapper">
+<mapper namespace="com.geekluxun.dao.TPageMapper">
     <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.domain.entity.Page">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="page_id" jdbcType="BIGINT" property="pageId.id"/>
@@ -49,9 +49,9 @@
                 #{url,jdbcType=VARCHAR},
                 #{iconUri,jdbcType=VARCHAR},
                 #{level,jdbcType=INTEGER},
-                #{browseTotalCount,jdbcType=INTEGER},
-                #{lastBrowseTime,jdbcType=DATE},
-                #{readed,jdbcType=TINYINT},
+                #{pageBrowse.browseTotalCount,jdbcType=INTEGER},
+                #{pageBrowse.lastBrowseTime,jdbcType=DATE},
+                #{pageBrowse.readed,jdbcType=TINYINT},
                 #{concurrencyVersion,jdbcType=INTEGER},
                 #{createTime,jdbcType=DATE},
                 #{modifyTime,jdbcType=DATE})

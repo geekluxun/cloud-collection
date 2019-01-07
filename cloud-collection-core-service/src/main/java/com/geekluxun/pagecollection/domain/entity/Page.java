@@ -6,7 +6,9 @@ import com.geekluxun.pagecollection.domain.valobj.PageId;
 import com.geekluxun.pagecollection.domain.valobj.PageImportanceLevelEnum;
 import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.nio.charset.Charset;
 
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.

@@ -7,12 +7,13 @@ import com.geekluxun.pagecollection.domain.entity.Page;
 import com.geekluxun.pagecollection.domain.valobj.PageBrowse;
 import com.geekluxun.pagecollection.domain.valobj.PageId;
 import com.geekluxun.pagecollection.domain.valobj.PageImportanceLevelEnum;
-import com.geekluxun.pagecollection.repo.dao.TCollectionMapper;
-import com.geekluxun.pagecollection.repo.dao.TPageMapper;
+import com.geekluxun.dao.TCollectionMapper;
+import com.geekluxun.dao.TPageMapper;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
+import java.util.Random;
 
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
@@ -38,7 +39,7 @@ public class PageCollctionApplicationService {
      */
     public ResponseDto<Object> pageCollect(RequestDto<PageCollectRequestDto> pageCollectRequestDto){
         ResponseDto<Object> responseDto = new ResponseDto<>();
-        PageId id = new PageId("123");
+        PageId id = new PageId(new Random().nextInt() + "");
         PageBrowse pageBrowse = new PageBrowse(0, null, false);
 
         Page page = new Page(id,"我的网页","www.baidu.com", "/tmp/img/icon1", PageImportanceLevelEnum.HiGH,pageBrowse);
