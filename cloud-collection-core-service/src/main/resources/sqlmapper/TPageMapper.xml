@@ -9,11 +9,11 @@
         <result column="icon_uri" jdbcType="VARCHAR" property="iconUri"/>
         <result column="level" jdbcType="INTEGER" property="level"/>
         <result column="browse_total_count" jdbcType="INTEGER" property="pageBrowse.browseTotalCount"/>
-        <result column="last_browse_time" jdbcType="DATE" property="pageBrowse.lastBrowseTime"/>
+        <result column="last_browse_time" jdbcType="TIMESTAMP" property="pageBrowse.lastBrowseTime"/>
         <result column="readed" jdbcType="TINYINT" property="pageBrowse.readed"/>
         <result column="concurrency_version" jdbcType="INTEGER" property="concurrencyVersion"/>
-        <result column="create_time" jdbcType="DATE" property="createTime"/>
-        <result column="modify_time" jdbcType="DATE" property="modifyTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
     </resultMap>
     <sql id="Base_Column_List">
         id, page_id, title, url, icon_uri, level, browse_total_count, last_browse_time, readed,
@@ -50,11 +50,11 @@
                 #{iconUri,jdbcType=VARCHAR},
                 #{level,jdbcType=INTEGER},
                 #{pageBrowse.browseTotalCount,jdbcType=INTEGER},
-                #{pageBrowse.lastBrowseTime,jdbcType=DATE},
+                #{pageBrowse.lastBrowseTime,jdbcType=TIMESTAMP},
                 #{pageBrowse.readed,jdbcType=TINYINT},
                 #{concurrencyVersion,jdbcType=INTEGER},
-                #{createTime,jdbcType=DATE},
-                #{modifyTime,jdbcType=DATE})
+                #{createTime,jdbcType=TIMESTAMP},
+                #{modifyTime,jdbcType=TIMESTAMP})
     </insert>
     <!--<insert id="insertSelective" parameterType="com.geekluxun.entity.TPage">-->
         <!--insert into t_page-->
@@ -119,7 +119,7 @@
                 <!--#{browseTotalCount,jdbcType=INTEGER},-->
             <!--</if>-->
             <!--<if test="lastBrowseTime != null">-->
-                <!--#{lastBrowseTime,jdbcType=DATE},-->
+                <!--#{lastBrowseTime,jdbcType=TIMESTAMP},-->
             <!--</if>-->
             <!--<if test="readed != null">-->
                 <!--#{readed,jdbcType=TINYINT},-->
@@ -128,10 +128,10 @@
                 <!--#{concurrencyVersion,jdbcType=INTEGER},-->
             <!--</if>-->
             <!--<if test="createTime != null">-->
-                <!--#{createTime,jdbcType=DATE},-->
+                <!--#{createTime,jdbcType=TIMESTAMP},-->
             <!--</if>-->
             <!--<if test="modifyTime != null">-->
-                <!--#{modifyTime,jdbcType=DATE},-->
+                <!--#{modifyTime,jdbcType=TIMESTAMP},-->
             <!--</if>-->
         <!--</trim>-->
     <!--</insert>-->
@@ -157,7 +157,7 @@
                 <!--browse_total_count = #{browseTotalCount,jdbcType=INTEGER},-->
             <!--</if>-->
             <!--<if test="lastBrowseTime != null">-->
-                <!--last_browse_time = #{lastBrowseTime,jdbcType=DATE},-->
+                <!--last_browse_time = #{lastBrowseTime,jdbcType=TIMESTAMP},-->
             <!--</if>-->
             <!--<if test="readed != null">-->
                 <!--readed = #{readed,jdbcType=TINYINT},-->
@@ -166,10 +166,10 @@
                 <!--concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},-->
             <!--</if>-->
             <!--<if test="createTime != null">-->
-                <!--create_time = #{createTime,jdbcType=DATE},-->
+                <!--create_time = #{createTime,jdbcType=TIMESTAMP},-->
             <!--</if>-->
             <!--<if test="modifyTime != null">-->
-                <!--modify_time = #{modifyTime,jdbcType=DATE},-->
+                <!--modify_time = #{modifyTime,jdbcType=TIMESTAMP},-->
             <!--</if>-->
         <!--</set>-->
         <!--where id = #{id,jdbcType=BIGINT}-->
@@ -182,11 +182,11 @@
             <!--icon_uri            = #{iconUri,jdbcType=VARCHAR},-->
             <!--level               = #{level,jdbcType=INTEGER},-->
             <!--browse_total_count  = #{browseTotalCount,jdbcType=INTEGER},-->
-            <!--last_browse_time    = #{lastBrowseTime,jdbcType=DATE},-->
+            <!--last_browse_time    = #{lastBrowseTime,jdbcType=TIMESTAMP},-->
             <!--readed              = #{readed,jdbcType=TINYINT},-->
             <!--concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},-->
-            <!--create_time         = #{createTime,jdbcType=DATE},-->
-            <!--modify_time         = #{modifyTime,jdbcType=DATE}-->
+            <!--create_time         = #{createTime,jdbcType=TIMESTAMP},-->
+            <!--modify_time         = #{modifyTime,jdbcType=TIMESTAMP}-->
         <!--where id = #{id,jdbcType=BIGINT}-->
     <!--</update>-->
 </mapper>

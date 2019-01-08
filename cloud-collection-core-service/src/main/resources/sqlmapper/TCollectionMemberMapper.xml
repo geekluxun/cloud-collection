@@ -31,8 +31,8 @@
                 #{name,jdbcType=VARCHAR},
                 #{type,jdbcType=TINYINT},
                 #{concurrencyVersion,jdbcType=INTEGER},
-                #{createTime,jdbcType=DATE},
-                #{modifyTime,jdbcType=DATE})
+                #{createTime,jdbcType=TIMESTAMP},
+                #{modifyTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="com.geekluxun.entity.TCollectionMember">
         insert into t_collection_member
@@ -76,10 +76,10 @@
                 #{concurrencyVersion,jdbcType=INTEGER},
             </if>
             <if test="createTime != null">
-                #{createTime,jdbcType=DATE},
+                #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="modifyTime != null">
-                #{modifyTime,jdbcType=DATE},
+                #{modifyTime,jdbcType=TIMESTAMP},
             </if>
         </trim>
     </insert>
@@ -99,10 +99,10 @@
                 concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},
             </if>
             <if test="createTime != null">
-                create_time = #{createTime,jdbcType=DATE},
+                create_time = #{createTime,jdbcType=TIMESTAMP},
             </if>
             <if test="modifyTime != null">
-                modify_time = #{modifyTime,jdbcType=DATE},
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
             </if>
         </set>
         where id = #{id,jdbcType=BIGINT}
@@ -113,8 +113,8 @@
             name                = #{name,jdbcType=VARCHAR},
             type                = #{type,jdbcType=TINYINT},
             concurrency_version = #{concurrencyVersion,jdbcType=INTEGER},
-            create_time         = #{createTime,jdbcType=DATE},
-            modify_time         = #{modifyTime,jdbcType=DATE}
+            create_time         = #{createTime,jdbcType=TIMESTAMP},
+            modify_time         = #{modifyTime,jdbcType=TIMESTAMP}
         where id = #{id,jdbcType=BIGINT}
     </update>
 </mapper>
