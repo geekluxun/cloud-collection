@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.Set;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-04 15:26

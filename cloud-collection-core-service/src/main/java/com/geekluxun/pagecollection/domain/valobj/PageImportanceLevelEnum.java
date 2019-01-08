@@ -3,7 +3,7 @@ package com.geekluxun.pagecollection.domain.valobj;
 import com.geekluxun.common.ValueObject;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-04 15:08
