@@ -3,7 +3,7 @@
 <mapper namespace="com.geekluxun.pagecollection.repo.dao.TPageMapper">
     <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.domain.entity.Page">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="page_id" jdbcType="BIGINT" property="pageId.id"/>
+        <result column="page_id" jdbcType="VARCHAR" property="pageId.id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
         <result column="url" jdbcType="VARCHAR" property="url"/>
         <result column="icon_uri" jdbcType="VARCHAR" property="iconUri"/>
@@ -44,7 +44,7 @@
                             create_time,
                             modify_time)
         values (#{id,jdbcType=BIGINT},
-                #{pageId.id,jdbcType=BIGINT},
+                #{pageId.id,jdbcType=VARCHAR},
                 #{title,jdbcType=VARCHAR},
                 #{url,jdbcType=VARCHAR},
                 #{iconUri,jdbcType=VARCHAR},
@@ -139,7 +139,7 @@
         <!--update t_page-->
         <!--<set>-->
             <!--<if test="pageId != null">-->
-                <!--page_id = #{pageId,jdbcType=BIGINT},-->
+                <!--page_id = #{pageId,jdbcType=VARCHAR},-->
             <!--</if>-->
             <!--<if test="title != null">-->
                 <!--title = #{title,jdbcType=VARCHAR},-->
@@ -176,7 +176,7 @@
     <!--</update>-->
     <!--<update id="updateByPrimaryKey" parameterType="com.geekluxun.entity.TPage">-->
         <!--update t_page-->
-        <!--set page_id             = #{pageId,jdbcType=BIGINT},-->
+        <!--set page_id             = #{pageId,jdbcType=VARCHAR},-->
             <!--title               = #{title,jdbcType=VARCHAR},-->
             <!--url                 = #{url,jdbcType=VARCHAR},-->
             <!--icon_uri            = #{iconUri,jdbcType=VARCHAR},-->

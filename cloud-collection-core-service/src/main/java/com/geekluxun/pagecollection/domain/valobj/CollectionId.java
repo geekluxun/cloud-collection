@@ -11,6 +11,11 @@ import com.geekluxun.common.AbstractId;
  * @Other:
  */
 public class CollectionId extends AbstractId {
+    
+    public CollectionId(String id){
+        super(id);
+    }
+    
     @Override
     protected int hashOddValue() {
         return 0;

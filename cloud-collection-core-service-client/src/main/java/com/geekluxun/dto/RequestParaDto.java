@@ -1,16 +1,14 @@
 package com.geekluxun.dto;
 
-import lombok.Data;
+import java.io.Serializable;
 
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
  *
  * @Author: luxun
- * @Create: 2019-01-04 18:23
+ * @Create: 2019-01-08 16:35
  * @Description:
  * @Other:
  */
-@Data
-public class PageCollectRequestDto {
-    private String url;
+public abstract class RequestParaDto implements Serializable {
 }

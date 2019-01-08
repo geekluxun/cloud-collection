@@ -14,9 +14,39 @@ public enum CollectionMemberTypeEnum {
     
     private int type;
     private String desc;
-
+    
     CollectionMemberTypeEnum(int type, String desc){
         this.type = type;
         this.desc = desc;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+    
+    public static CollectionMemberTypeEnum getCollectionMemberTypeEnumByType(int type){
+        CollectionMemberTypeEnum memberTypeEnum = null;
+        for(CollectionMemberTypeEnum typeEnum : CollectionMemberTypeEnum.values()){
+            if (typeEnum.getType() ==  type){
+                memberTypeEnum = typeEnum;
+                break;
+            }
+        }
+        if (memberTypeEnum == null){
+            throw new RuntimeException("枚举类型不存在");
+        }
+        return memberTypeEnum;
     }
 }
