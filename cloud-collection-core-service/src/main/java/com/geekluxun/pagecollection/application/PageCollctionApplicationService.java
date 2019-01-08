@@ -7,9 +7,8 @@ import com.geekluxun.pagecollection.domain.entity.Page;
 import com.geekluxun.pagecollection.domain.valobj.PageBrowse;
 import com.geekluxun.pagecollection.domain.valobj.PageId;
 import com.geekluxun.pagecollection.domain.valobj.PageImportanceLevelEnum;
-import com.geekluxun.dao.TCollectionMapper;
-import com.geekluxun.dao.TPageMapper;
-import org.apache.commons.lang3.RandomStringUtils;
+import com.geekluxun.pagecollection.repo.dao.TCollectionMapper;
+import com.geekluxun.pagecollection.repo.dao.TPageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

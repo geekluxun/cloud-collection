@@ -1,4 +1,4 @@
-package com.geekluxun.dao;
+package com.geekluxun.pagecollection.repo.dao;
 
 import com.geekluxun.pagecollection.domain.entity.Page;
 import com.geekluxun.entity.TPage;

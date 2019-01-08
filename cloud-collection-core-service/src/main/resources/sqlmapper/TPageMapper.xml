@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.geekluxun.dao.TPageMapper">
+<mapper namespace="com.geekluxun.pagecollection.repo.dao.TPageMapper">
     <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.domain.entity.Page">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="page_id" jdbcType="BIGINT" property="pageId.id"/>

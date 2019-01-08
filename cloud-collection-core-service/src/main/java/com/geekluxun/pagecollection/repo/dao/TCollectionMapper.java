@@ -1,4 +1,4 @@
-package com.geekluxun.dao;
+package com.geekluxun.pagecollection.repo.dao;
 
 import com.geekluxun.entity.TCollection;
 import org.springframework.stereotype.Repository;

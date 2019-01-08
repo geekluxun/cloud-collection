@@ -20,7 +20,7 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 @EnableHystrix
 @EnableCircuitBreaker
 @SpringBootApplication
-@MapperScan(value = "com.geekluxun.dao")
+@MapperScan(basePackages = {"com.geekluxun.dao", "com.geekluxun.pagecollection.repo.dao"})
 @DubboComponentScan(basePackages = "com.geekluxun.service.impl")
 public class CloudCollectionCoreServiceApplication {
 
