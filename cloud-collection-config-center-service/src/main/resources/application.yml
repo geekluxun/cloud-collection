@@ -11,7 +11,7 @@ spring:
           password: geekluxun.33
 server:
   port: 12000
-  
+
 management:
   endpoints:
     web:

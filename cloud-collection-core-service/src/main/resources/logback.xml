@@ -18,7 +18,7 @@
             <customFields>{"applicationName":"cloud-collecion-core-service"}</customFields>
         </encoder>
     </appender>
-    
+
     <property name="filePath" value="/data/logs"/>
     <property name="project.name" value="cloud-collection-core-service"/>
 
@@ -50,7 +50,7 @@
         <level value="debug"/>
         <appender-ref ref="STDOUT"/>
         <!--<appender-ref ref="rollingFileAppender"/>-->
-        <appender-ref ref="logstash" />
+        <appender-ref ref="logstash"/>
     </root>
 
 </configuration>

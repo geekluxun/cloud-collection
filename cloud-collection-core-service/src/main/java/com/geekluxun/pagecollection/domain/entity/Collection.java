@@ -33,8 +33,8 @@ public class Collection extends Entity {
      * 收藏夹下内容（通过CollectionId业务逻辑上关联）
      */
     private Set<CollectionMember> content;
-    
-    public Collection(CollectionId id, String name, Boolean top, Set<CollectionMember> content){
+
+    public Collection(CollectionId id, String name, Boolean top, Set<CollectionMember> content) {
         this.collectionId = id;
         this.name = name;
         this.top = top;

@@ -35,7 +35,7 @@ public abstract class AbstractId extends AssertionConcern implements Identity, S
     @Override
     public int hashCode() {
         int hashCodeValue =
-                + (this.hashOddValue() * this.hashPrimeValue())
+                +(this.hashOddValue() * this.hashPrimeValue())
                         + this.id().hashCode();
 
         return hashCodeValue;

@@ -1,9 +1,7 @@
 package com.geekluxun.pagecollection.domain.valobj;
 
 import com.geekluxun.common.IdentifiedValueObject;
-import com.geekluxun.common.ValueObject;
 import lombok.Data;
-import sun.text.normalizer.UBiDiProps;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -19,11 +17,11 @@ public class CollectionMember extends IdentifiedValueObject {
     private String name;
     private CollectionMemberTypeEnum type;
     private CollectionId collectionId;
-    
+
     public CollectionMember(String memberId,
                             String name,
                             CollectionMemberTypeEnum type,
-                            CollectionId collectionId){
+                            CollectionId collectionId) {
         super();
         this.memberId = memberId;
         this.name = name;

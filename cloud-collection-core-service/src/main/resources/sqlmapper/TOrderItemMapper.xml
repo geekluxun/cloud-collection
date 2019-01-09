@@ -9,10 +9,12 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
     <insert id="insert" parameterType="com.geekluxun.entity.TOrderItem">
-        INSERT INTO t_order_item (id, order_id, amount,
-                                  create_time, update_time)
-        VALUES (#{id,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL},
-                #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+        INSERT INTO t_order_item (id, order_id, amount, create_time, update_time)
+        VALUES (#{id,jdbcType=BIGINT},
+                #{orderId,jdbcType=BIGINT},
+                #{amount,jdbcType=DECIMAL},
+                #{createTime,jdbcType=TIMESTAMP},
+                #{updateTime,jdbcType=TIMESTAMP})
     </insert>
     <insert id="insertSelective" parameterType="com.geekluxun.entity.TOrderItem">
         insert into t_order_item

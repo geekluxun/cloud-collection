@@ -1,4 +1,3 @@
-
 eureka:
   client:
     serviceUrl:
@@ -7,8 +6,8 @@ server:
   port: 8086
 spring:
   application:
-    name: cloud-collection-trace-service    
-    
+    name: cloud-collection-trace-service
+
 management:
   metrics:
     web:

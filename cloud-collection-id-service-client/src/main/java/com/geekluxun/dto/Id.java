@@ -29,7 +29,7 @@ public class Id implements Serializable {
     /**
      * ID类型
      * <P>1位，用来区分两种ID类型:最大峰值型和最小粒度型
-     *  0：最大峰值型 1：最小粒度型
+     * 0：最大峰值型 1：最小粒度型
      * </P>
      */
     private long type;

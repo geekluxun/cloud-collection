@@ -20,6 +20,6 @@ public interface TOrderMapper {
     int updateByPrimaryKey(TOrder record);
 
     int count();
-    
+
     List<TOrder> selectAll();
 }

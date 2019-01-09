@@ -25,22 +25,23 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service(timeout = 5000)
 public class UserApplicationServiceImpl implements UserApplicationService {
-    
+
     @Autowired
     private TUserMapper userMapper;
-    
+
     @Reference
     private IdService idService;
 
     /**
      * 用户登录
+     *
      * @param requestDto
      * @return
      */
     @Transactional
-    public ResponseDto<UserLoginResponseDto> login(RequestDto<UserLoginDto> requestDto){
+    public ResponseDto<UserLoginResponseDto> login(RequestDto<UserLoginDto> requestDto) {
         ResponseDto<UserLoginResponseDto> responseDto = new ResponseDto<>();
-        
+
         // TODO
         return responseDto;
     }
@@ -48,21 +49,22 @@ public class UserApplicationServiceImpl implements UserApplicationService {
 
     /**
      * 用户注册
+     *
      * @return
      */
     @Transactional
-    public ResponseDto<UserRegisterResponseDto> register(RequestDto<UserRegisterDto> requestDto){
-        ResponseDto<UserRegisterResponseDto>  responseDto = new ResponseDto<>();
+    public ResponseDto<UserRegisterResponseDto> register(RequestDto<UserRegisterDto> requestDto) {
+        ResponseDto<UserRegisterResponseDto> responseDto = new ResponseDto<>();
         UserRegisterDto requestPara = requestDto.getRequestPara();
-        
+
         UserId userId = new UserId("U" + idService.genId());
         User user = new User(userId, requestPara.getName(), requestPara.getEmail(), requestPara.getPassword());
-        
+
         userMapper.insert(user);
 
         UserRegisterResponseDto registerResponseDto = new UserRegisterResponseDto();
         registerResponseDto.setUserId(user.getUserId().id());
         responseDto.setData(registerResponseDto);
         return responseDto;
-    } 
+    }
 }

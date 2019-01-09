@@ -12,6 +12,6 @@ import lombok.Data;
  * @Other:
  */
 @Data
-public class UserRegisterResponseDto  extends ResponseDataDto {
+public class UserRegisterResponseDto extends ResponseDataDto {
     private String userId;
 }

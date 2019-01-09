@@ -1,7 +1,5 @@
 package com.geekluxun.pagecollection.domain.valobj;
 
-import com.geekluxun.common.ValueObject;
-
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -10,16 +8,16 @@ import com.geekluxun.common.ValueObject;
  * @Description:
  * @Other:
  */
-public enum  PageImportanceLevelEnum  {
-    
+public enum PageImportanceLevelEnum {
+
     HiGH(3, "重要"),
     NORMAL(2, "一般"),
-    LOW(1,"低");
-    
+    LOW(1, "低");
+
     private int level;
     private String desc;
 
-    PageImportanceLevelEnum(int level, String desc){
+    PageImportanceLevelEnum(int level, String desc) {
         this.level = level;
         this.desc = desc;
     }
@@ -39,23 +37,23 @@ public enum  PageImportanceLevelEnum  {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-    
-    public static PageImportanceLevelEnum getPageImportanceLevelEnumByLevel(int level){
+
+    public static PageImportanceLevelEnum getPageImportanceLevelEnumByLevel(int level) {
         PageImportanceLevelEnum levelEnum = null;
-        switch (level){
-            case 1:{
+        switch (level) {
+            case 1: {
                 levelEnum = LOW;
                 break;
             }
-            case 2:{
-                levelEnum = NORMAL; 
+            case 2: {
+                levelEnum = NORMAL;
                 break;
             }
-            case 3:{
+            case 3: {
                 levelEnum = HiGH;
                 break;
             }
-            default:{
+            default: {
                 throw new RuntimeException("不支持的枚举类型");
             }
         }

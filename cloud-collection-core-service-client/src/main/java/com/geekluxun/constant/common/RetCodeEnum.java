@@ -1,7 +1,5 @@
 package com.geekluxun.constant.common;
 
-import lombok.Data;
-
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -12,15 +10,15 @@ import lombok.Data;
  */
 
 public enum RetCodeEnum {
-    
+
     RET_SUCCESS(0, "成功"),
     RET_FAILURE(9999, "失败");
 
     private int code;
     private String msg;
-    
-    
-    RetCodeEnum(int code, String msg){
+
+
+    RetCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }

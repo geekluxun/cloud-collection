@@ -3,21 +3,21 @@ cloud-collection-web:
   image: >-
     registry-vpc.cn-hangzhou.aliyuncs.com/geekluxun-myapp/cloud-collection-web:latest
   ports:
-    - '8081:8081'
+  - '8081:8081'
   restart: always
   environment:
-    - LANG=C.UTF-8
-    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+  - LANG=C.UTF-8
+  - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
   labels:
     aliyun.scale: '1'
   volumes:
-    - '/tmp/data:/data'
+  - '/tmp/data:/data'
   memswap_limit: 0
   shm_size: 0
   memswap_reservation: 0
   kernel_memory: 0
-  external_links: 
-    - "cloud-collection-core-service.local"
+  external_links:
+  - "cloud-collection-core-service.local"
   name: cloud-collection-web
 
 #核心服务  
@@ -27,13 +27,13 @@ cloud-collection-core-service:
   restart: always
   hostname: cloud-collection-core-service
   environment:
-    - LANG=C.UTF-8
-    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+  - LANG=C.UTF-8
+  - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
   labels:
     aliyun.scale: '1'
     aliyun.routing.port_8083: cloud-collection-core-service.local
   volumes:
-    - '/tmp/data:/data'
+  - '/tmp/data:/data'
   memswap_limit: 0
   shm_size: 0
   memswap_reservation: 0

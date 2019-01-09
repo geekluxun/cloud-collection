@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @DubboComponentScan(basePackages = "com.geekluxun.service.impl")
 public class CloudCollectionIdServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CloudCollectionIdServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CloudCollectionIdServiceApplication.class, args);
+    }
 }

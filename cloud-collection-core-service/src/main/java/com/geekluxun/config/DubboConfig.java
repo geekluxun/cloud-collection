@@ -31,7 +31,7 @@ public class DubboConfig {
     }
 
     @Bean
-    public ProtocolConfig protocolConfig(){
+    public ProtocolConfig protocolConfig() {
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setPort(30038);
         protocolConfig.setName("dubbo");

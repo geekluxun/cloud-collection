@@ -20,7 +20,7 @@ import java.sql.SQLException;
  */
 @MappedTypes(PageImportanceLevelEnum.class)
 public class PageImportanceLevelTypeHandler implements TypeHandler<PageImportanceLevelEnum> {
-    
+
     @Override
     public void setParameter(PreparedStatement preparedStatement, int i, PageImportanceLevelEnum pageImportanceLevelEnum, JdbcType jdbcType) throws SQLException {
         preparedStatement.setInt(i, pageImportanceLevelEnum.getLevel());
@@ -31,7 +31,7 @@ public class PageImportanceLevelTypeHandler implements TypeHandler<PageImportanc
     public PageImportanceLevelEnum getResult(ResultSet resultSet, String s) throws SQLException {
         Integer level = resultSet.getInt(s);
         return PageImportanceLevelEnum.getPageImportanceLevelEnumByLevel(level);
-        
+
     }
 
     @Override

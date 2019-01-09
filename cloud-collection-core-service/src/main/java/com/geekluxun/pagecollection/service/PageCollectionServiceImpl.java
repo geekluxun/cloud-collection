@@ -20,19 +20,20 @@ import java.util.Set;
  * @Other:
  */
 @Service
-public class PageCollectionServiceImpl implements PageCollectionService{
-    
+public class PageCollectionServiceImpl implements PageCollectionService {
+
     @Autowired
     private TCollectionMemberMapper memberMapper;
-    
+
     @Autowired
     private TCollectionMapper collectionMapper;
-    
+
     @Autowired
     private TPageMapper pageMapper;
 
     /**
      * 递归删除收藏夹
+     *
      * @param collectionId
      * @return
      */

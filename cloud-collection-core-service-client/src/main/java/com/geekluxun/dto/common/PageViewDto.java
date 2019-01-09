@@ -11,7 +11,7 @@ import lombok.Data;
  * @Other:
  */
 @Data
-public class PageViewDto extends BaseDto{
+public class PageViewDto extends BaseDto {
     /**
      * 每页大小
      */

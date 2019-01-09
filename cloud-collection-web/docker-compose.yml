@@ -3,7 +3,7 @@ cloud-collection-web:
   image: >-
     registry.cn-hangzhou.aliyuncs.com/geekluxun-myapp/cloud-collection-web:latest
   ports:
-    - '8081:8081'
+  - '8081:8081'
   labels:
     aliyun.scale: '1'
   memswap_limit: 0

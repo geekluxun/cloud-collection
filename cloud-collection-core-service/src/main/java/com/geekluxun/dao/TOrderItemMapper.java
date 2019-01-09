@@ -8,8 +8,8 @@ public interface TOrderItemMapper {
     int insert(TOrderItem record);
 
     int insertSelective(TOrderItem record);
-    
+
     int count();
-    
+
     List<TOrderItem> selectAll();
 }

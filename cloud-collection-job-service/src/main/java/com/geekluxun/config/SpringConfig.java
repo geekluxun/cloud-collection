@@ -33,22 +33,22 @@ import javax.sql.DataSource;
 //        "classpath:spring/spring-elasticjob.xml"
 })
 public class SpringConfig {
-    
+
     @Autowired
     CoordinatorRegistryCenter registryCenter;
-    
+
     @Bean
-    public JobScheduler simpleJobSchedule(){
+    public JobScheduler simpleJobSchedule() {
         JobEventConfiguration jobEventConfig = new JobEventRdbConfiguration(setUpEventTraceDataSource());
         JobScheduler jobScheduler = setUpSimpleJob(registryCenter, jobEventConfig);
         jobScheduler.init();
         return jobScheduler;
-       
+
     }
-    
-    
+
+
     @Bean
-    public JobScheduler dataFlowJobSchedule(){
+    public JobScheduler dataFlowJobSchedule() {
         JobEventConfiguration jobEventConfig = new JobEventRdbConfiguration(setUpEventTraceDataSource());
         JobScheduler jobScheduler = setUpDataflowJob(registryCenter, jobEventConfig);
         jobScheduler.init();
@@ -63,16 +63,16 @@ public class SpringConfig {
         result.init();
         return result;
     }
-    
-    
-    private  JobScheduler setUpSimpleJob(final CoordinatorRegistryCenter regCenter, final JobEventConfiguration jobEventConfig) {
+
+
+    private JobScheduler setUpSimpleJob(final CoordinatorRegistryCenter regCenter, final JobEventConfiguration jobEventConfig) {
         JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("javaSimpleJob", "0/5 * * * * ?", 3).shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou").build();
         SimpleJobConfiguration simpleJobConfig = new SimpleJobConfiguration(coreConfig, JavaSimpleJob.class.getCanonicalName());
-        return  new JobScheduler(regCenter, LiteJobConfiguration.newBuilder(simpleJobConfig).build(), jobEventConfig);
+        return new JobScheduler(regCenter, LiteJobConfiguration.newBuilder(simpleJobConfig).build(), jobEventConfig);
     }
-    
-    
-    private  DataSource setUpEventTraceDataSource() {
+
+
+    private DataSource setUpEventTraceDataSource() {
         DruidDataSource result = new DruidDataSource();
         result.setDriverClassName("com.mysql.jdbc.Driver");
         result.setUrl("jdbc:mysql://116.62.63.81:3306/ds0");
@@ -81,9 +81,9 @@ public class SpringConfig {
         return result;
     }
 
-    private  JobScheduler setUpDataflowJob(final CoordinatorRegistryCenter regCenter, final JobEventConfiguration jobEventConfig) {
+    private JobScheduler setUpDataflowJob(final CoordinatorRegistryCenter regCenter, final JobEventConfiguration jobEventConfig) {
         JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("javaDataflowElasticJob", "0/5 * * * * ?", 3).shardingItemParameters("0=Beijing,1=Shanghai,2=Guangzhou").build();
         DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(coreConfig, JavaDataflowJob.class.getCanonicalName(), true);
-        return  new JobScheduler(regCenter, LiteJobConfiguration.newBuilder(dataflowJobConfig).build(), jobEventConfig);
+        return new JobScheduler(regCenter, LiteJobConfiguration.newBuilder(dataflowJobConfig).build(), jobEventConfig);
     }
 }

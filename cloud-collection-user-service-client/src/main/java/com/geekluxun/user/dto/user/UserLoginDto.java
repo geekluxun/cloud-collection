@@ -3,8 +3,6 @@ package com.geekluxun.user.dto.user;
 import com.geekluxun.dto.common.RequestParaDto;
 import lombok.Data;
 
-import javax.print.attribute.standard.PrinterURI;
-
 /**
  * Copyright,2018-2019,xinxindai Co.,Ltd.
  *

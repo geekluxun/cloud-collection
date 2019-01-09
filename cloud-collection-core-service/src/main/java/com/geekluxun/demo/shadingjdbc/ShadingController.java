@@ -1,6 +1,5 @@
 package com.geekluxun.demo.shadingjdbc;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSON;
 import com.geekluxun.dao.TOrderItemMapper;
@@ -8,21 +7,15 @@ import com.geekluxun.dao.TOrderMapper;
 import com.geekluxun.entity.TOrder;
 import com.geekluxun.entity.TOrderItem;
 import com.geekluxun.service.IdService;
-import io.shardingsphere.transaction.api.SoftTransactionManager;
-import io.shardingsphere.transaction.api.config.SoftTransactionConfiguration;
 import io.shardingsphere.transaction.bed.BEDSoftTransaction;
-import io.shardingsphere.transaction.constants.SoftTransactionType;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -39,31 +32,31 @@ import java.util.Random;
 @Controller
 @RequestMapping("/shadingjdbc")
 public class ShadingController {
-    
+
     @Autowired
     TOrderMapper tOrderMapper;
-    
+
     @Autowired
     TOrderItemMapper orderItemMapper;
-    
+
     //@Autowired
     @Reference
     IdService idService;
-    
-    
+
+
     //@Resource(name = "DuridDataSource")
     @Autowired
     DataSource dataSource;
-    
+
     //@Autowired
     BEDSoftTransaction transaction;
-    
-    
+
+
     @RequestMapping("/save/order")
     @ResponseBody
-    public Object saveOrder(){
+    public Object saveOrder() {
         TOrder order = new TOrder();
-        order.setId((long)new Random(47).nextInt(9999));
+        order.setId((long) new Random(47).nextInt(9999));
         order.setUserId(idService.genId());
         order.setCreateTime(new Date());
         order.setUpdateTime(new Date());
@@ -75,19 +68,19 @@ public class ShadingController {
         orderItem.setCreateTime(new Date());
         orderItem.setUpdateTime(new Date());
         orderItemMapper.insertSelective(orderItem);
-        
+
         HashMap response = new HashMap();
-        response.put("response:" , "ok");
+        response.put("response:", "ok");
         return response;
     }
-    
-    
+
+
     @RequestMapping("/all/order")
     @ResponseBody
-    public Object query(){
+    public Object query() {
         int count = orderItemMapper.count();
         System.out.println("订单总共个数:" + count);
-        
+
         List<TOrder> list = tOrderMapper.selectAll();
         System.out.println("各个元素:" + JSON.toJSONString(list));
         HashMap para = new HashMap(10);
@@ -98,7 +91,7 @@ public class ShadingController {
 
     @RequestMapping("/all/item")
     @ResponseBody
-    public Object queryAllOrderItem(){
+    public Object queryAllOrderItem() {
         int count = orderItemMapper.count();
         System.out.println("订单明细总共个数:" + count);
 
@@ -112,12 +105,13 @@ public class ShadingController {
 
     /**
      * 据说这个柔性事务还是有问题的，暂时未测通
+     *
      * @return
      */
     @RequestMapping("/transaction")
     @ResponseBody
-    public Object transactionTest(){
-        try{
+    public Object transactionTest() {
+        try {
             // 4. 开启事务
             transaction.begin(dataSource.getConnection());
             String id = transaction.getTransactionId();
@@ -125,7 +119,7 @@ public class ShadingController {
 
             // 5. 执行JDBC
             saveOrder();
-            int value = 0/0;
+            int value = 0 / 0;
             // 6.关闭事务
             transaction.end();
         } catch (Exception e) {

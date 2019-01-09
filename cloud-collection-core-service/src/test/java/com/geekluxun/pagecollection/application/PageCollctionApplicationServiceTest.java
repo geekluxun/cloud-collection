@@ -23,7 +23,7 @@ public class PageCollctionApplicationServiceTest {
 
     @Test
     public void pageCollect() {
-        ResponseDto<Object> responseDto =  pageCollctionService.pageCollect(null);
+        ResponseDto<Object> responseDto = pageCollctionService.pageCollect(null);
         Assert.assertTrue(responseDto.getRetCode() == 0);
     }
 }

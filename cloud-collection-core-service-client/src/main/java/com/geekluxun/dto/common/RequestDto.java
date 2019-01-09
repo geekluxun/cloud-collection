@@ -2,8 +2,6 @@ package com.geekluxun.dto.common;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *

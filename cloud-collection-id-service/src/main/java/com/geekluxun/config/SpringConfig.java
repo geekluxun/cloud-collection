@@ -23,7 +23,7 @@ import java.net.UnknownHostException;
 })
 public class SpringConfig {
 
-    @Bean(initMethod = "init",name = "ipConfigurableMachineIdProvider")
+    @Bean(initMethod = "init", name = "ipConfigurableMachineIdProvider")
     public IpConfigurableMachineIdProvider springDemoConfig() {
         IpConfigurableMachineIdProvider provider = new IpConfigurableMachineIdProvider();
         String ip = "";

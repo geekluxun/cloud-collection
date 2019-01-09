@@ -6,7 +6,10 @@ import com.geekluxun.dto.pagecollection.AddCollectionDto;
 import com.geekluxun.dto.pagecollection.CollectPageDto;
 import com.geekluxun.pagecollection.application.PageCollctionApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -21,17 +24,17 @@ import org.springframework.web.bind.annotation.*;
 public class PageCollectionController {
     @Autowired
     private PageCollctionApplicationService pageCollctionService;
-    
+
     @PostMapping("/collect")
-    public Object pageCollect(@RequestBody RequestDto<CollectPageDto> requestDto){
-        ResponseDto<Object> responseDto =  pageCollctionService.pageCollect(requestDto);
+    public Object pageCollect(@RequestBody RequestDto<CollectPageDto> requestDto) {
+        ResponseDto<Object> responseDto = pageCollctionService.pageCollect(requestDto);
         return responseDto;
     }
-    
+
     @PostMapping("/addCollection")
-    public Object addCollection(@RequestBody RequestDto<AddCollectionDto> requestDto){
+    public Object addCollection(@RequestBody RequestDto<AddCollectionDto> requestDto) {
         ResponseDto<Object> responseDto = pageCollctionService.addCollection(requestDto);
         return responseDto;
     }
-    
+
 }

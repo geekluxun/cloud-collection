@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class CollectPageDto extends RequestParaDto {
     /**
-     *  网页url
+     * 网页url
      */
     private String url;
     /**

@@ -12,10 +12,10 @@ import com.geekluxun.common.AbstractId;
  */
 public class PageId extends AbstractId {
 
-    public PageId(String id){
+    public PageId(String id) {
         super(id);
     }
-    
+
     @Override
     protected int hashOddValue() {
         return 0;

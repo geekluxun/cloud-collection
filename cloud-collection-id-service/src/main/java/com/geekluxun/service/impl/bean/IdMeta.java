@@ -1,8 +1,8 @@
 package com.geekluxun.service.impl.bean;
 
 /**
- *
  * machine -> seq -> time -> genMethod -> type -> version
+ *
  * @see IdMeta
  * @see IdType
  */
@@ -50,13 +50,11 @@ public class IdMeta {
     }
 
     /**
-     *
      * @return
      */
     public long getMachineBitsMask() {
         return -1L ^ -1L << machineBits;
     }
-
 
 
     public byte getSeqBits() {
@@ -69,6 +67,7 @@ public class IdMeta {
 
     /**
      * seq开始的位数: 也就是machineBits
+     *
      * @return
      */
     public long getSeqBitsStartPos() {
@@ -78,7 +77,6 @@ public class IdMeta {
     public long getSeqBitsMask() {
         return -1L ^ -1L << seqBits;
     }
-
 
 
     public byte getTimeBits() {
@@ -98,7 +96,6 @@ public class IdMeta {
     }
 
 
-
     public byte getGenMethodBits() {
         return genMethodBits;
     }
@@ -116,7 +113,6 @@ public class IdMeta {
     }
 
 
-
     public byte getTypeBits() {
         return typeBits;
     }
@@ -132,7 +128,6 @@ public class IdMeta {
     public long getTypeBitsMask() {
         return -1L ^ -1L << typeBits;
     }
-
 
 
     public byte getVersionBits() {

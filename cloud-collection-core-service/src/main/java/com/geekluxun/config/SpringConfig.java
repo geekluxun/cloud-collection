@@ -1,29 +1,19 @@
 package com.geekluxun.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.geekluxun.dao.TOrderItemMapper;
-import com.geekluxun.dao.TOrderMapper;
 import com.google.common.collect.Lists;
 import io.shardingsphere.core.api.ShardingDataSourceFactory;
 import io.shardingsphere.core.api.config.MasterSlaveRuleConfiguration;
 import io.shardingsphere.core.api.config.ShardingRuleConfiguration;
 import io.shardingsphere.core.api.config.TableRuleConfiguration;
 import io.shardingsphere.core.api.config.strategy.InlineShardingStrategyConfiguration;
-import io.shardingsphere.core.jdbc.core.datasource.ShardingDataSource;
 import io.shardingsphere.transaction.api.SoftTransactionManager;
 import io.shardingsphere.transaction.api.config.NestedBestEffortsDeliveryJobConfiguration;
 import io.shardingsphere.transaction.api.config.SoftTransactionConfiguration;
 import io.shardingsphere.transaction.bed.BEDSoftTransaction;
 import io.shardingsphere.transaction.constants.SoftTransactionType;
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.ibatis.mapping.Environment;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.transaction.TransactionFactory;
-import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 
 import javax.sql.DataSource;
@@ -41,8 +31,8 @@ import java.util.*;
 
 //@Configuration
 @ImportResource(locations = {
-       // "classpath:spring/dubbo-client.xml",
-       // "classpath:spring/dubbo-service.xml"
+        // "classpath:spring/dubbo-client.xml",
+        // "classpath:spring/dubbo-service.xml"
 })
 public class SpringConfig {
 
@@ -74,9 +64,9 @@ public class SpringConfig {
     @Value("${sharding.jdbc.datasource.master1slave0.password}")
     String password;
 
-//    DruidDataSource dataSource;
+    //    DruidDataSource dataSource;
     DataSource myDataSource;
-    
+
     @Bean
     DataSource getShardingDataSource() throws SQLException {
         ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
@@ -108,6 +98,7 @@ public class SpringConfig {
 
     /**
      * 订单明细表分库分表
+     *
      * @return
      */
     TableRuleConfiguration getOrderItemTableRuleConfiguration() {
@@ -122,14 +113,15 @@ public class SpringConfig {
     }
 
     List<MasterSlaveRuleConfiguration> getMasterSlaveRuleConfigurations() {
-        MasterSlaveRuleConfiguration masterSlaveRuleConfig1 = new MasterSlaveRuleConfiguration("ds0", "ds0",Arrays.asList("ds0_slave0", "ds0_slave1"));
-        MasterSlaveRuleConfiguration masterSlaveRuleConfig2 = new MasterSlaveRuleConfiguration("ds1", "ds1",Arrays.asList("ds1_slave0", "ds1_slave1"));
+        MasterSlaveRuleConfiguration masterSlaveRuleConfig1 = new MasterSlaveRuleConfiguration("ds0", "ds0", Arrays.asList("ds0_slave0", "ds0_slave1"));
+        MasterSlaveRuleConfiguration masterSlaveRuleConfig2 = new MasterSlaveRuleConfiguration("ds1", "ds1", Arrays.asList("ds1_slave0", "ds1_slave1"));
         return Lists.newArrayList(masterSlaveRuleConfig1, masterSlaveRuleConfig2);
     }
 
 
     /**
-     *  所有的数据源
+     * 所有的数据源
+     *
      * @return
      */
     Map<String, DataSource> createDataSourceMap() {
@@ -211,10 +203,10 @@ public class SpringConfig {
             // 1. 配置SoftTransactionConfiguration
             SoftTransactionConfiguration transactionConfig = new SoftTransactionConfiguration(myDataSource);
             transactionConfig.setSyncMaxDeliveryTryTimes(3);
-            
+
             NestedBestEffortsDeliveryJobConfiguration configuration = new NestedBestEffortsDeliveryJobConfiguration();
-            
-            
+
+
             transactionConfig.setTransactionLogDataSource(myDataSource);
             // 2. 初始化SoftTransactionManager
             SoftTransactionManager transactionManager = new SoftTransactionManager(transactionConfig);

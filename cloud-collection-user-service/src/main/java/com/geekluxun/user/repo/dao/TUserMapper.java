@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TUserMapper {
-    
+
     int insert(User record);
 
 }

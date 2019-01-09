@@ -1,13 +1,10 @@
 package com.geekluxun.pagecollection.domain.entity;
 
 import com.geekluxun.common.Entity;
-import com.geekluxun.pagecollection.domain.valobj.*;
+import com.geekluxun.pagecollection.domain.valobj.PageBrowse;
+import com.geekluxun.pagecollection.domain.valobj.PageId;
+import com.geekluxun.pagecollection.domain.valobj.PageImportanceLevelEnum;
 import lombok.Data;
-import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.nio.charset.Charset;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -27,11 +24,11 @@ public class Page extends Entity {
     private PageBrowse pageBrowse;
 
     public Page(PageId pageId,
-         String name,
-         String url,
-         String iconUri,
-         PageImportanceLevelEnum level,
-         PageBrowse pageBrowse){
+                String name,
+                String url,
+                String iconUri,
+                PageImportanceLevelEnum level,
+                PageBrowse pageBrowse) {
         this.pageId = pageId;
         this.name = name;
         this.url = url;
@@ -39,5 +36,5 @@ public class Page extends Entity {
         this.level = level;
         this.pageBrowse = pageBrowse;
     }
-    
+
 }

@@ -11,9 +11,9 @@ import lombok.Data;
  * @Other:
  */
 @Data
-public class ResponseDto<T> extends BaseDto{
+public class ResponseDto<T> extends BaseDto {
     private int retCode;
-    private String  retMsg;
+    private String retMsg;
     private T data;
     private long responseId;
 }

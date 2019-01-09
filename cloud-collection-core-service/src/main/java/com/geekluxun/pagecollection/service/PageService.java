@@ -13,7 +13,8 @@ import com.geekluxun.dto.pagecollection.QueryPageDto;
  * @Description:
  * @Other:
  */
-public interface PageService{
+public interface PageService {
     ResponseDto<Object> deletePage(String pageId);
+
     ResponseDto<PageListDto> queryPageOfCollection(RequestDto<QueryPageDto> requestDto);
 }

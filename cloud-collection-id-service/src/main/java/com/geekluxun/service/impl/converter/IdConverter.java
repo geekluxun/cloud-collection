@@ -9,8 +9,8 @@ import com.geekluxun.dto.Id;
  */
 public interface IdConverter {
 
-	long convert(Id id);
+    long convert(Id id);
 
-	Id convert(long id);
+    Id convert(long id);
 
 }

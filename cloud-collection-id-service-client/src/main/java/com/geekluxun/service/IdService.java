@@ -29,6 +29,7 @@ public interface IdService {
     /**
      * 翻译时间
      * <P>把长整形的时间转化成可读的格式</P>
+     *
      * @param time
      * @return
      */
@@ -39,22 +40,26 @@ public interface IdService {
      * <P>通过给定的ID元素来制造ID</P>
      */
     long makeId(long time, long seq);
+
     /**
      * 制造ID
      * <P>通过给定的ID元素来制造ID</P>
      */
     long makeId(long time, long seq, long machine);
+
     /**
      * 制造ID
      * <P>通过给定的ID元素来制造ID</P>
      */
     long makeId(long genMethod, long time, long seq, long machine);
+
     /**
      * 制造ID
      * <P>通过给定的ID元素来制造ID</P>
      */
-    long makeId(long type, long genMethod,  long time,
+    long makeId(long type, long genMethod, long time,
                 long seq, long machine);
+
     /**
      * 制造ID
      * <P>通过给定的ID元素来制造ID</P>

@@ -7,12 +7,12 @@ import com.geekluxun.service.IdService;
 import com.geekluxun.service.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -37,14 +37,14 @@ public class HomeController {
     @Reference
     TestService testService;
     @Reference
-    IdService idService;        
+    IdService idService;
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
 
     @RequestMapping("/")
     public String home(HttpServletRequest request, HttpServletResponse response, Model model) {
-        
+
         Knowledge knowledge = new Knowledge();
         knowledge.setTitle("知识就是力量");
         knowledge.setUrl("https://github.com/geekluxun");
@@ -54,7 +54,7 @@ public class HomeController {
         knowledge = new Knowledge();
         knowledge.setTitle("helloword");
         knowledge.setUrl("http://baidu.com");
-        
+
         knowledges.add(knowledge);
         model.addAttribute("knowledges", knowledges);
         return "index";
@@ -66,7 +66,7 @@ public class HomeController {
         logger.info("luxun");
         return "index";
     }
-    
+
 
     @RequestMapping("core")
     @ResponseBody
@@ -93,8 +93,8 @@ public class HomeController {
     }
 
     @RequestMapping("/dubbo")
-    public void dubbo(){
+    public void dubbo() {
         testService.test();
     }
-    
+
 }

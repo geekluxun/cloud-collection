@@ -176,7 +176,7 @@
                 <artifactId>dubbo</artifactId>
                 <version>2.6.1</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -194,7 +194,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            
+
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -206,7 +206,7 @@
                 <artifactId>sharding-jdbc-transaction</artifactId>
                 <version>${shadingjdbc.version}</version>
             </dependency>
-            
+
             <dependency>
                 <groupId>io.shardingsphere</groupId>
                 <artifactId>sharding-jdbc-transaction-async-job</artifactId>

@@ -42,10 +42,10 @@ public class PageCollctionApplicationService {
 
     @Reference
     private IdService idService;
-    
+
     @Autowired
     private PageCollectionService collectionService;
-    
+
     @Autowired
     private PageService pageService;
 
@@ -138,6 +138,7 @@ public class PageCollctionApplicationService {
 
     /**
      * 删除收藏夹
+     *
      * @param requestDto
      * @return
      */
@@ -146,60 +147,62 @@ public class PageCollctionApplicationService {
         ResponseDto responseDto = new ResponseDto();
         DeleteCollectionDto requestPara = requestDto.getRequestPara();
         responseDto = collectionService.delectCollection(requestPara.getCollectionId());
-        
+
         return responseDto;
     }
 
     /**
      * 删除单个网页
+     *
      * @return
      */
     @Transactional
-    public ResponseDto<Object> deletePage(RequestDto<DeletePageDto> requestDto){
+    public ResponseDto<Object> deletePage(RequestDto<DeletePageDto> requestDto) {
         DeletePageDto requestPara = requestDto.getRequestPara();
         return pageService.deletePage(requestPara.getPageId());
     }
 
     /**
      * 修改网页
+     *
      * @param requestDto
      * @return
      */
     @Transactional
-    public ResponseDto<Object> modifyPage(RequestDto<ModifyPageDto> requestDto){
+    public ResponseDto<Object> modifyPage(RequestDto<ModifyPageDto> requestDto) {
         ResponseDto<Object> responseDto = new ResponseDto<>();
         ModifyPageDto requestPara = requestDto.getRequestPara();
-        
+
         Page page = pageMapper.queryByPageId(requestPara.getPageId());
         // 修改网页重要性级别
-        if (requestPara.getNewLevel() != null){
+        if (requestPara.getNewLevel() != null) {
             PageImportanceLevelEnum newLevel = PageImportanceLevelEnum.getPageImportanceLevelEnumByLevel(requestPara.getNewLevel());
             page.setLevel(newLevel);
         }
-        
+
         // 修改网页名称 
-        if (requestPara.getNewName() != null){
+        if (requestPara.getNewName() != null) {
             page.setName(requestPara.getNewName());
         }
-        
+
         pageMapper.updateByPageId(page);
         return responseDto;
     }
 
     /**
      * 网页浏览
+     *
      * @param requestDto
      * @return
      */
     @Transactional
-    public ResponseDto<Object> browsePage(RequestDto<BrowsePageDto> requestDto){
+    public ResponseDto<Object> browsePage(RequestDto<BrowsePageDto> requestDto) {
         ResponseDto responseDto = new ResponseDto();
         BrowsePageDto requestPara = requestDto.getRequestPara();
 
         Page page = pageMapper.queryByPageId(requestPara.getPageId());
         PageBrowse pageBrowse = page.getPageBrowse();
-        if (!pageBrowse.isReaded())
-        {
+        if (!pageBrowse.isReaded()) {
             pageBrowse.setReaded(true);
         }
         int browseTotalCount = pageBrowse.getBrowseTotalCount() + 1;
@@ -210,5 +213,5 @@ public class PageCollctionApplicationService {
 
         return responseDto;
     }
-    
+
 }    

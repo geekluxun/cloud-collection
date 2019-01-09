@@ -1,7 +1,6 @@
 package com.geekluxun.typehandler;
 
 import com.geekluxun.pagecollection.domain.valobj.CollectionMemberTypeEnum;
-import com.geekluxun.pagecollection.domain.valobj.PageImportanceLevelEnum;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;

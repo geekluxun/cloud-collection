@@ -2,7 +2,6 @@ package com.geekluxun.service.impl.bean;
 
 /**
  * IdMeta工厂类
- *
  */
 public class IdMetaFactory {
     /**
@@ -20,7 +19,7 @@ public class IdMetaFactory {
             return maxPeak;
         } else if (IdType.MIN_GRANULARITY.equals(type)) {
             return minGranularity;
-        }else {
+        } else {
             throw new RuntimeException("不支持的IdMeta");
         }
     }

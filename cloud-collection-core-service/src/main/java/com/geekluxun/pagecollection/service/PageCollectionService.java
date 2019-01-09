@@ -11,5 +11,5 @@ import com.geekluxun.dto.common.ResponseDto;
  * @Other:
  */
 public interface PageCollectionService {
-    ResponseDto<Object>  delectCollection(String collectionId);
+    ResponseDto<Object> delectCollection(String collectionId);
 }

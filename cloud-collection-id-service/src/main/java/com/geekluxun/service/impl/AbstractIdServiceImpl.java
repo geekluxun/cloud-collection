@@ -8,166 +8,165 @@ import com.geekluxun.service.impl.bean.IdMetaFactory;
 import com.geekluxun.service.impl.bean.IdType;
 import com.geekluxun.service.impl.converter.IdConverter;
 import com.geekluxun.service.impl.converter.IdConverterImpl;
-import com.geekluxun.service.impl.provider.IpConfigurableMachineIdProvider;
 import com.geekluxun.service.impl.provider.MachineIdProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.Date;
 
 public abstract class AbstractIdServiceImpl implements IdService {
-	//2015/1/1 0:0:0
-	public static final long EPOCH = 1420041600000L;
+    //2015/1/1 0:0:0
+    public static final long EPOCH = 1420041600000L;
 
-	protected final Logger log = LoggerFactory.getLogger(this.getClass());
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
-	protected long machineId = -1;
-	protected long genMethod = 0;
-	protected long type = 0;
-	protected long version = 0;
+    protected long machineId = -1;
+    protected long genMethod = 0;
+    protected long type = 0;
+    protected long version = 0;
 
-	protected IdType idType;
-	protected IdMeta idMeta;
-	@Autowired
-	protected IdConverter idConverter;
+    protected IdType idType;
+    protected IdMeta idMeta;
+    @Autowired
+    protected IdConverter idConverter;
 
-	@Resource(name = "ipConfigurableMachineIdProvider")
-	protected MachineIdProvider machineIdProvider;
+    @Resource(name = "ipConfigurableMachineIdProvider")
+    protected MachineIdProvider machineIdProvider;
 
-	public AbstractIdServiceImpl() {
-		idType = IdType.MAX_PEAK;
-	}
+    public AbstractIdServiceImpl() {
+        idType = IdType.MAX_PEAK;
+    }
 
-	public AbstractIdServiceImpl(String type) {
-		idType = IdType.parse(type);
-	}
+    public AbstractIdServiceImpl(String type) {
+        idType = IdType.parse(type);
+    }
 
-	public AbstractIdServiceImpl(IdType type) {
-		idType = type;
-	}
+    public AbstractIdServiceImpl(IdType type) {
+        idType = type;
+    }
 
-	
-	@PostConstruct
-	public void init() {
-		this.machineId = machineIdProvider.getMachineId();
 
-		if (machineId < 0) {
-			log.error("The machine ID is not configured properly so that Vesta Service refuses to start.");
+    @PostConstruct
+    public void init() {
+        this.machineId = machineIdProvider.getMachineId();
 
-			throw new IllegalStateException(
-					"The machine ID is not configured properly so that Vesta Service refuses to start.");
+        if (machineId < 0) {
+            log.error("The machine ID is not configured properly so that Vesta Service refuses to start.");
 
-		}
+            throw new IllegalStateException(
+                    "The machine ID is not configured properly so that Vesta Service refuses to start.");
 
-		setIdMeta(IdMetaFactory.getIdMeta(idType));
-		setType(idType.value());
-		setIdConverter(new IdConverterImpl(idType));
-	}
+        }
 
-	public long genId() {
-		Id id = new Id();
+        setIdMeta(IdMetaFactory.getIdMeta(idType));
+        setType(idType.value());
+        setIdConverter(new IdConverterImpl(idType));
+    }
 
-		populateId(id);
+    public long genId() {
+        Id id = new Id();
 
-		id.setMachine(machineId);
-		id.setGenMethod(genMethod);
-		id.setType(type);
-		id.setVersion(version);
+        populateId(id);
 
-		long ret = idConverter.convert(id);
+        id.setMachine(machineId);
+        id.setGenMethod(genMethod);
+        id.setType(type);
+        id.setVersion(version);
 
-		// Use trace because it cause low performance
-		if (log.isTraceEnabled())
-			log.trace(String.format("Id: %s => %d", id, ret));
+        long ret = idConverter.convert(id);
 
-		return ret;
-	}
+        // Use trace because it cause low performance
+        if (log.isTraceEnabled())
+            log.trace(String.format("Id: %s => %d", id, ret));
 
-	/**
-	 * populate seq and time for ID
-	 * @param id
-	 */
-	protected abstract void populateId(Id id);
+        return ret;
+    }
 
-	protected long genTime() {
-		if (idType == IdType.MAX_PEAK)
-			return (System.currentTimeMillis() - EPOCH) / 1000;
-		else if (idType == IdType.MIN_GRANULARITY)
-			return (System.currentTimeMillis() - EPOCH);
+    /**
+     * populate seq and time for ID
+     *
+     * @param id
+     */
+    protected abstract void populateId(Id id);
 
-		return (System.currentTimeMillis() - EPOCH) / 1000;
-	}
+    protected long genTime() {
+        if (idType == IdType.MAX_PEAK)
+            return (System.currentTimeMillis() - EPOCH) / 1000;
+        else if (idType == IdType.MIN_GRANULARITY)
+            return (System.currentTimeMillis() - EPOCH);
 
-	public Id expId(long id) {
-		return idConverter.convert(id);
-	}
+        return (System.currentTimeMillis() - EPOCH) / 1000;
+    }
 
-	public long makeId(long time, long seq) {
-		return makeId(time, seq, machineId);
-	}
+    public Id expId(long id) {
+        return idConverter.convert(id);
+    }
 
-	public long makeId(long time, long seq, long machine) {
-		return makeId(genMethod, time, seq, machine);
-	}
+    public long makeId(long time, long seq) {
+        return makeId(time, seq, machineId);
+    }
 
-	public long makeId(long genMethod, long time, long seq, long machine) {
-		return makeId(type, genMethod, time, seq, machine);
-	}
+    public long makeId(long time, long seq, long machine) {
+        return makeId(genMethod, time, seq, machine);
+    }
 
-	public long makeId(long type, long genMethod,  long time,
-			long seq, long machine) {
-		return makeId(version, type, genMethod, time, seq, machine);
-	}
+    public long makeId(long genMethod, long time, long seq, long machine) {
+        return makeId(type, genMethod, time, seq, machine);
+    }
 
-	public long makeId(long version, long type, long genMethod, 
-			long time, long seq, long machine) {
-		IdType idType = IdType.parse(type);
+    public long makeId(long type, long genMethod, long time,
+                       long seq, long machine) {
+        return makeId(version, type, genMethod, time, seq, machine);
+    }
 
-		Id id = new Id(machine, seq, time, genMethod, type, version);
-		IdConverter idConverter = new IdConverterImpl(idType);
+    public long makeId(long version, long type, long genMethod,
+                       long time, long seq, long machine) {
+        IdType idType = IdType.parse(type);
 
-		return idConverter.convert(id);
-	}
+        Id id = new Id(machine, seq, time, genMethod, type, version);
+        IdConverter idConverter = new IdConverterImpl(idType);
 
-	public Date transTime(long time) {
-		if (idType == IdType.MAX_PEAK) {
-			return new Date(time * 1000 + EPOCH);
-		} else if (idType == IdType.MIN_GRANULARITY) {
-			return new Date(time + EPOCH);
-		}
+        return idConverter.convert(id);
+    }
 
-		return null;
-	}
+    public Date transTime(long time) {
+        if (idType == IdType.MAX_PEAK) {
+            return new Date(time * 1000 + EPOCH);
+        } else if (idType == IdType.MIN_GRANULARITY) {
+            return new Date(time + EPOCH);
+        }
 
-	public void setMachineId(long machineId) {
-		this.machineId = machineId;
-	}
+        return null;
+    }
 
-	public void setGenMethod(long genMethod) {
-		this.genMethod = genMethod;
-	}
+    public void setMachineId(long machineId) {
+        this.machineId = machineId;
+    }
 
-	public void setType(long type) {
-		this.type = type;
-	}
+    public void setGenMethod(long genMethod) {
+        this.genMethod = genMethod;
+    }
 
-	public void setVersion(long version) {
-		this.version = version;
-	}
+    public void setType(long type) {
+        this.type = type;
+    }
 
-	public void setIdConverter(IdConverter idConverter) {
-		this.idConverter = idConverter;
-	}
+    public void setVersion(long version) {
+        this.version = version;
+    }
 
-	public void setIdMeta(IdMeta idMeta) {
-		this.idMeta = idMeta;
-	}
+    public void setIdConverter(IdConverter idConverter) {
+        this.idConverter = idConverter;
+    }
 
-	public void setMachineIdProvider(MachineIdProvider machineIdProvider) {
-		this.machineIdProvider = machineIdProvider;
-	}
+    public void setIdMeta(IdMeta idMeta) {
+        this.idMeta = idMeta;
+    }
+
+    public void setMachineIdProvider(MachineIdProvider machineIdProvider) {
+        this.machineIdProvider = machineIdProvider;
+    }
 }
