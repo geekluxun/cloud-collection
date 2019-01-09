@@ -29,15 +29,15 @@ management:
     web:
       exposure:
         include: refresh, hystrix.stream 
-dubbo:
-  registry:
-    protocol: zookeeper
-    address:  172.20.87.7:2181
-  protocol:
-    name: dubbo
-    threadpool: cached
-    port: 30017
-    timeout: 15000
+#dubbo:
+#  registry:
+#    protocol: zookeeper
+#    address:  172.20.87.7:2181
+#  protocol:
+#    name: dubbo
+#    threadpool: cached
+#    port: 30017
+#    timeout: 15000
     
 # sharding jdbc 分片+ 读写分离    
 #dataSources:

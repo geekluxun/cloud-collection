@@ -2,6 +2,7 @@ package com.geekluxun.pagecollection.domain.valobj;
 
 import com.geekluxun.common.IdentifiedValueObject;
 import com.geekluxun.common.ValueObject;
+import lombok.Data;
 import sun.text.normalizer.UBiDiProps;
 
 /**
@@ -12,6 +13,7 @@ import sun.text.normalizer.UBiDiProps;
  * @Description:
  * @Other:
  */
+@Data
 public class CollectionMember extends IdentifiedValueObject {
     private String memberId;
     private String name;

@@ -1,5 +1,7 @@
 package com.geekluxun;
 
+import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,6 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Others:
  */
 @SpringBootApplication
+@DubboComponentScan(basePackages = "com.geekluxun")
+@MapperScan(basePackages = {"com.geekluxun.user.repo.dao"})
 public class CloudCollectionUserServiceApplication {
 
     public static void main(String[] args) {

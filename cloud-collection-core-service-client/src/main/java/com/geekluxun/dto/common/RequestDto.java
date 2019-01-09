@@ -1,9 +1,11 @@
-package com.geekluxun.dto;
+package com.geekluxun.dto.common;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-04 18:26
@@ -11,7 +13,7 @@ import lombok.Data;
  * @Other:
  */
 @Data
-public class RequestDto<T> {
+public class RequestDto<T> extends BaseDto {
     T requestPara;
     long requestId;
 }

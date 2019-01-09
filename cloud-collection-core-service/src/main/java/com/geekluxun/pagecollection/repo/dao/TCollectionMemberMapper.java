@@ -1,20 +1,18 @@
 package com.geekluxun.pagecollection.repo.dao;
 
-import com.geekluxun.entity.TCollectionMember;
 import com.geekluxun.pagecollection.domain.valobj.CollectionMember;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.Set;
 
 @Repository
 public interface TCollectionMemberMapper {
-    int deleteByPrimaryKey(Long id);
 
     int insert(CollectionMember record);
 
-    int insertSelective(TCollectionMember record);
+    int delectByMemberId(@Param("memberId") String memberId);
 
-    TCollectionMember selectByPrimaryKey(Long id);
+    Set<CollectionMember> queryByCollectionId(@Param("collectionId") String collectionId);
 
-    int updateByPrimaryKeySelective(TCollectionMember record);
-
-    int updateByPrimaryKey(TCollectionMember record);
 }

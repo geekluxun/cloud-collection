@@ -13,8 +13,8 @@ import org.springframework.context.annotation.ImportResource;
  */
 @Configuration
 @ImportResource(locations = {
-        "classpath:spring/dubbo-service.xml",
-        "classpath:spring/dubbo-client.xml"
+//        "classpath:spring/dubbo-service.xml",
+//        "classpath:spring/dubbo-client.xml"
 })
 public class CloudCollectionUserServiceConfig {
 

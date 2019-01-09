@@ -39,7 +39,7 @@ import java.util.*;
  * @Others:
  */
 
-@Configuration
+//@Configuration
 @ImportResource(locations = {
        // "classpath:spring/dubbo-client.xml",
        // "classpath:spring/dubbo-service.xml"

@@ -88,6 +88,13 @@
             <artifactId>dubbo</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.geekluxun</groupId>
+            <artifactId>cloud-collection-user-service-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>

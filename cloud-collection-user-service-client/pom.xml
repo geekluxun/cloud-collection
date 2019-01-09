@@ -17,6 +17,18 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.geekluxun</groupId>
+            <artifactId>cloud-collection-core-service-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>

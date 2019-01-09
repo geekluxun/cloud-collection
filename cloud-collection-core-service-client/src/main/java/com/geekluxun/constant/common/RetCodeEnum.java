@@ -1,9 +1,9 @@
-package com.geekluxun.dto;
+package com.geekluxun.constant.common;
 
 import lombok.Data;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-08 16:14

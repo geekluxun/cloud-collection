@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @Other:
  */
 @Configuration
-public class DubboConfiguration {
+public class DubboConfig {
 
     @Bean
     public ApplicationConfig applicationConfig() {

@@ -1,9 +1,10 @@
-package com.geekluxun.dto;
+package com.geekluxun.dto.pagecollection;
 
+import com.geekluxun.dto.common.RequestParaDto;
 import lombok.Data;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-08 10:24
@@ -11,7 +12,7 @@ import lombok.Data;
  * @Other:
  */
 @Data
-public class AddCollectionDto extends RequestParaDto{
+public class AddCollectionDto extends RequestParaDto {
     /**
      * 收藏夹名字
      */

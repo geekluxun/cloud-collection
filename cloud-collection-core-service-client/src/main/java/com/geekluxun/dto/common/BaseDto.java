@@ -1,4 +1,4 @@
-package com.geekluxun.dto;
+package com.geekluxun.dto.common;
 
 import java.io.Serializable;
 
@@ -6,9 +6,9 @@ import java.io.Serializable;
  * Copyright,2018-2019,xinxindai Co.,Ltd.
  *
  * @Author: luxun
- * @Create: 2019-01-08 16:35
+ * @Create: 2019-01-09 17:36
  * @Description:
  * @Other:
  */
-public abstract class RequestParaDto implements Serializable {
+public class BaseDto implements Serializable {
 }

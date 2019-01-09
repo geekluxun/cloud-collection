@@ -55,7 +55,7 @@ public class ShadingController {
     @Autowired
     DataSource dataSource;
     
-    @Autowired
+    //@Autowired
     BEDSoftTransaction transaction;
     
     

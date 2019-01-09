@@ -1,17 +1,24 @@
 package com.geekluxun.pagecollection.application;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.geekluxun.dto.*;
+import com.geekluxun.constant.common.RetCodeEnum;
+import com.geekluxun.dto.common.RequestDto;
+import com.geekluxun.dto.common.ResponseDto;
+import com.geekluxun.dto.pagecollection.*;
 import com.geekluxun.pagecollection.domain.entity.Collection;
 import com.geekluxun.pagecollection.domain.entity.Page;
 import com.geekluxun.pagecollection.domain.valobj.*;
 import com.geekluxun.pagecollection.repo.dao.TCollectionMapper;
 import com.geekluxun.pagecollection.repo.dao.TCollectionMemberMapper;
 import com.geekluxun.pagecollection.repo.dao.TPageMapper;
+import com.geekluxun.pagecollection.service.PageCollectionService;
+import com.geekluxun.pagecollection.service.PageService;
 import com.geekluxun.service.IdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -35,6 +42,12 @@ public class PageCollctionApplicationService {
 
     @Reference
     private IdService idService;
+    
+    @Autowired
+    private PageCollectionService collectionService;
+    
+    @Autowired
+    private PageService pageService;
 
     /**
      * 网页收藏
@@ -43,15 +56,14 @@ public class PageCollctionApplicationService {
      * @return
      */
     @Transactional
-    public ResponseDto<Object> pageCollect(RequestDto<PageCollectDto> requestDto) {
+    public ResponseDto<Object> pageCollect(RequestDto<CollectPageDto> requestDto) {
         ResponseDto<Object> responseDto = new ResponseDto<>();
         PageBrowse pageBrowse = new PageBrowse(0, null, false);
-        PageCollectDto requestParaDto = requestDto.getRequestPara();
+        CollectPageDto requestParaDto = requestDto.getRequestPara();
 
         // 创建网页
         PageId id = new PageId("P" + idService.genId());
         Page page = new Page(id,
-                requestParaDto.getTitle(),
                 requestParaDto.getName(),
                 requestParaDto.getUrl(),
                 null,
@@ -72,6 +84,7 @@ public class PageCollctionApplicationService {
 
     /**
      * 添加网页收藏夹
+     *
      * @param requestDto
      * @return
      */
@@ -104,23 +117,98 @@ public class PageCollctionApplicationService {
 
     /**
      * 修改收藏夹名字
+     *
      * @param requestDto
      * @return
      */
     @Transactional
-    public ResponseDto<Object> modifyCollectionName(RequestDto<ModifyCollectionNameDto> requestDto){
+    public ResponseDto<Object> modifyCollectionName(RequestDto<ModifyCollectionNameDto> requestDto) {
         ResponseDto responseDto = new ResponseDto();
         ModifyCollectionNameDto requestPara = requestDto.getRequestPara();
         Collection collection = collectionMapper.queryByCollectionId(requestPara.getCollectionId());
-        if (collection == null){
+        if (collection == null) {
             responseDto.setRetCode(RetCodeEnum.RET_FAILURE.getCode());
             responseDto.setRetMsg("修改的收藏夹不存在");
             return responseDto;
         }
-        
+
         collectionMapper.updateById(collection);
         return responseDto;
     }
-    
+
+    /**
+     * 删除收藏夹
+     * @param requestDto
+     * @return
+     */
+    @Transactional
+    public ResponseDto<Object> delectCollection(RequestDto<DeleteCollectionDto> requestDto) {
+        ResponseDto responseDto = new ResponseDto();
+        DeleteCollectionDto requestPara = requestDto.getRequestPara();
+        responseDto = collectionService.delectCollection(requestPara.getCollectionId());
+        
+        return responseDto;
+    }
+
+    /**
+     * 删除单个网页
+     * @return
+     */
+    @Transactional
+    public ResponseDto<Object> deletePage(RequestDto<DeletePageDto> requestDto){
+        DeletePageDto requestPara = requestDto.getRequestPara();
+        return pageService.deletePage(requestPara.getPageId());
+    }
+
+    /**
+     * 修改网页
+     * @param requestDto
+     * @return
+     */
+    @Transactional
+    public ResponseDto<Object> modifyPage(RequestDto<ModifyPageDto> requestDto){
+        ResponseDto<Object> responseDto = new ResponseDto<>();
+        ModifyPageDto requestPara = requestDto.getRequestPara();
+        
+        Page page = pageMapper.queryByPageId(requestPara.getPageId());
+        // 修改网页重要性级别
+        if (requestPara.getNewLevel() != null){
+            PageImportanceLevelEnum newLevel = PageImportanceLevelEnum.getPageImportanceLevelEnumByLevel(requestPara.getNewLevel());
+            page.setLevel(newLevel);
+        }
+        
+        // 修改网页名称 
+        if (requestPara.getNewName() != null){
+            page.setName(requestPara.getNewName());
+        }
+        
+        pageMapper.updateByPageId(page);
+        return responseDto;
+    }
+
+    /**
+     * 网页浏览
+     * @param requestDto
+     * @return
+     */
+    @Transactional
+    public ResponseDto<Object> browsePage(RequestDto<BrowsePageDto> requestDto){
+        ResponseDto responseDto = new ResponseDto();
+        BrowsePageDto requestPara = requestDto.getRequestPara();
+
+        Page page = pageMapper.queryByPageId(requestPara.getPageId());
+        PageBrowse pageBrowse = page.getPageBrowse();
+        if (!pageBrowse.isReaded())
+        {
+            pageBrowse.setReaded(true);
+        }
+        int browseTotalCount = pageBrowse.getBrowseTotalCount() + 1;
+        pageBrowse.setBrowseTotalCount(browseTotalCount);
+        pageBrowse.setLastBrowseTime(new Date());
+        page.setPageBrowse(pageBrowse);
+        pageMapper.updateByPageId(page);
+
+        return responseDto;
+    }
     
 }    
