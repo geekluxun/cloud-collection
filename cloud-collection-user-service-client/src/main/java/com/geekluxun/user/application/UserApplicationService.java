@@ -8,7 +8,7 @@ import com.geekluxun.user.dto.user.UserRegisterDto;
 import com.geekluxun.user.dto.user.UserRegisterResponseDto;
 
 /**
- * Copyright,2018-2019,xinxindai Co.,Ltd.
+ * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
  * @Author: luxun
  * @Create: 2019-01-09 14:29
