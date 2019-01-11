@@ -1,6 +1,7 @@
 package com.geekluxun.pagecollection.application;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.geekluxun.constant.common.RetCodeEnum;
 import com.geekluxun.dto.common.RequestDto;
 import com.geekluxun.dto.common.ResponseDto;
@@ -14,8 +15,8 @@ import com.geekluxun.pagecollection.repo.dao.TPageMapper;
 import com.geekluxun.pagecollection.service.PageCollectionService;
 import com.geekluxun.pagecollection.service.PageService;
 import com.geekluxun.service.IdService;
+import com.geekluxun.service.PageCollctionApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -29,7 +30,7 @@ import java.util.Date;
  * @Other: 应用服务层的主要职责包括事务控制、服务编排（调用内部领域服务或应用服务或者外部应用服务），一个方法对应一个用例流
  */
 @Service
-public class PageCollctionApplicationService {
+public class PageCollctionApplicationServiceImpl  implements PageCollctionApplicationService {
 
     @Autowired
     private TCollectionMapper collectionMapper;
@@ -199,7 +200,7 @@ public class PageCollctionApplicationService {
     public ResponseDto<Object> browsePage(RequestDto<BrowsePageDto> requestDto) {
         ResponseDto responseDto = new ResponseDto();
         BrowsePageDto requestPara = requestDto.getRequestPara();
-
+        
         Page page = pageMapper.queryByPageId(requestPara.getPageId());
         PageBrowse pageBrowse = page.getPageBrowse();
         if (!pageBrowse.isReaded()) {
@@ -214,4 +215,14 @@ public class PageCollctionApplicationService {
         return responseDto;
     }
 
+    /**
+     * 查询用户收藏的网页
+     * @param request
+     * @return
+     */
+    @Transactional
+    @Override
+    public ResponseDto<PageListDto> queryPages(RequestDto<QueryPageDto> request) {
+        return pageService.queryPageOfCollection(request);
+    }
 }    

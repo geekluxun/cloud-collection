@@ -59,7 +59,7 @@ public class PageServiceImpl implements PageService {
         String collectionId = requestPara.getCollectionId();
 
         // 分页
-        PageHelper.startPage(pageNum, PAGE_SIZE);
+        //PageHelper.startPage(pageNum, PAGE_SIZE);
         Set<CollectionMember> members = memberMapper.queryByCollectionId(collectionId);
         PageListDto pageListDto = new PageListDto();
         List<PageDto> pageDtos = new ArrayList<>();
@@ -69,11 +69,14 @@ public class PageServiceImpl implements PageService {
                 PageDto pageDto = new PageDto();
                 Page page = pageMapper.queryByPageId(member.getMemberId());
                 pageDto.setPageId(page.getPageId().id());
-                PageBrowseDto pageBrowseDto = new PageBrowseDto();
-                BeanUtils.copyProperties(page.getPageBrowse(), pageBrowseDto);
-                pageDto.setPageBrowse(pageBrowseDto);
+                
+                pageDto.setBrowseTotalCount(page.getPageBrowse().getBrowseTotalCount());
+                pageDto.setLastBrowseTime(page.getPageBrowse().getLastBrowseTime());
+                pageDto.setReaded(page.getPageBrowse().isReaded());
                 pageDto.setLevel(page.getLevel().getLevel());
                 pageDto.setUrl(page.getUrl());
+                pageDto.setName(page.getName());
+                pageDto.setIconUri(page.getIconUri());
                 pageDtos.add(pageDto);
             }
 
@@ -85,6 +88,7 @@ public class PageServiceImpl implements PageService {
         pageView.setPageSize(PAGE_SIZE);
 
         pageListDto.setPageView(pageView);
+        pageListDto.setPageList(pageDtos);
 
         responseDto.setData(pageListDto);
         return responseDto;

@@ -8,10 +8,7 @@ import com.geekluxun.user.application.UserApplicationService;
 import com.geekluxun.user.dto.user.UserRegisterDto;
 import com.geekluxun.user.dto.user.UserRegisterResponseDto;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
@@ -37,5 +34,11 @@ public class UserController {
         ResponseDto<UserRegisterResponseDto> responseDto = userService.register(requestDto);
 
         return responseDto;
+    }
+    
+    
+    @GetMapping("/test")
+    public Object test(){
+        return "dd";
     }
 }

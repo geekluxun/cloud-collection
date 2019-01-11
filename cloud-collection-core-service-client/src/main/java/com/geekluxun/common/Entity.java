@@ -25,4 +25,11 @@ public abstract class Entity extends AssertionConcern {
         this.setCreateTime(new Date());
         this.setModifyTime(new Date());
     }
+    
+    public Entity(Long id, Integer concurrencyVersion, Date createTime, Date modifyTime){
+        this.id = id;
+        this.concurrencyVersion = concurrencyVersion;
+        this.createTime = createTime;
+        this.modifyTime = modifyTime;
+    }
 }

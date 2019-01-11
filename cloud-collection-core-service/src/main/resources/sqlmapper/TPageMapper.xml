@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.geekluxun.pagecollection.domain.entity.Page">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="page_id" jdbcType="VARCHAR" property="pageId.id"/>
-        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="url" jdbcType="VARCHAR" property="url"/>
         <result column="icon_uri" jdbcType="VARCHAR" property="iconUri"/>
         <result column="level" jdbcType="INTEGER" property="level"/>
@@ -16,7 +16,7 @@
         <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, page_id, title, url, icon_uri, level, browse_total_count, last_browse_time, readed,
+        id, page_id, name, url, icon_uri, level, browse_total_count, last_browse_time, readed,
         concurrency_version, create_time, modify_time
     </sql>
 
@@ -47,4 +47,10 @@
                 #{modifyTime,jdbcType=TIMESTAMP})
     </insert>
 
+    <select id="queryByPageId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_page
+        where page_id = #{pageId}
+    </select>
 </mapper>

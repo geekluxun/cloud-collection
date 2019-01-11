@@ -6,6 +6,8 @@ import com.geekluxun.pagecollection.domain.valobj.PageId;
 import com.geekluxun.pagecollection.domain.valobj.PageImportanceLevelEnum;
 import lombok.Data;
 
+import java.sql.Timestamp;
+
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -36,5 +38,34 @@ public class Page extends Entity {
         this.level = level;
         this.pageBrowse = pageBrowse;
     }
+
+    public Page(Long id,
+                String pageId,
+                String name,
+                String url,
+                String iconUri,
+                Integer level,
+                Integer browseTotalCount,
+                Timestamp lastBrowseTime,
+                Integer readed,
+                Integer concurrencyVersion,
+                Timestamp createTime,
+                Timestamp modifyTime
+    ) {
+        super(id, concurrencyVersion, createTime, modifyTime);
+        this.pageId = new PageId(pageId);
+        this.iconUri = iconUri;
+        Boolean tmpReaded;
+        if (readed.intValue() == 0) {
+            tmpReaded = false;
+        } else {
+            tmpReaded = true;
+        }
+        this.pageBrowse = new PageBrowse(browseTotalCount, lastBrowseTime, tmpReaded);
+        this.level = PageImportanceLevelEnum.getPageImportanceLevelEnumByLevel(level);
+        this.name = name;
+        this.url = url;
+    }
+
 
 }

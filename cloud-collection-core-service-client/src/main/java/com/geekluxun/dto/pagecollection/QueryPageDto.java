@@ -14,6 +14,10 @@ import lombok.Data;
 @Data
 public class QueryPageDto extends RequestParaDto {
     /**
+     * 用户id
+     */
+    private String userId;
+    /**
      * 网页所在收藏夹id
      */
     private String collectionId;

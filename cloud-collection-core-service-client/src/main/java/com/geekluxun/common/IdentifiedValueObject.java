@@ -30,4 +30,12 @@ public class IdentifiedValueObject extends AssertionConcern implements Serializa
         this.setCreateTime(new Date());
         this.setModifyTime(new Date());
     }
+
+    public IdentifiedValueObject(long id, Date createTime, Date modifyTime, int concurrencyVersion) {
+        super();
+        this.id = id;
+        this.createTime = createTime;
+        this.modifyTime = modifyTime;
+        this.concurrencyVersion = concurrencyVersion;
+    }
 }

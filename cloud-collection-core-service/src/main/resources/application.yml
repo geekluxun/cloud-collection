@@ -118,4 +118,4 @@ mybatis:
     modelTargetPackage: com.geekluxun.entity
     daoTargetPackage: com.geekluxun.dao
     mapperTargetPackage: sqlmapper
-debug: true   
+debug: false   

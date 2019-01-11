@@ -1,5 +1,7 @@
 package com.geekluxun.dto.common;
 
+import java.io.Serializable;
+
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -8,5 +10,5 @@ package com.geekluxun.dto.common;
  * @Description: 标识响应业务数据类DTO
  * @Other:
  */
-public abstract class ResponseDataDto extends BaseDto {
+public abstract class ResponseDataDto implements Serializable {
 }

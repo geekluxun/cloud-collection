@@ -2,6 +2,8 @@ package com.geekluxun.dto.common;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Copyright,2018-2019,geekluxun Co.,Ltd.
  *
@@ -11,7 +13,7 @@ import lombok.Data;
  * @Other:
  */
 @Data
-public class ResponseDto<T> extends BaseDto {
+public class ResponseDto<T> implements Serializable {
     private int retCode;
     private String retMsg;
     private T data;
