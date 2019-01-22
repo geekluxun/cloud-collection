@@ -5,6 +5,7 @@ import com.alibaba.dubbo.config.ConsumerConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @Author: luxun
@@ -13,7 +14,11 @@ import org.springframework.context.annotation.Configuration;
  * @Other:
  */
 @Configuration
-public class DubboConfiguration {
+// 不需要这个配置，否则导致RESTFul和dubbo无法同时被zipkin跟踪 问题还未解决！！！
+//@ImportResource(locations = {
+//        "classpath:spring/zipkin-dubbo.xml",
+//})
+public class DubboConfig {
 
     @Bean
     public ApplicationConfig applicationConfig() {

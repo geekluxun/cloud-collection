@@ -9,7 +9,7 @@ import com.geekluxun.service.impl.bean.IdType;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-@Service(timeout = 5000)
+@Service(timeout = 5000, filter = "tracing")
 public class IdServiceImpl extends AbstractIdServiceImpl implements IdService {
     private long sequence = 0;
 

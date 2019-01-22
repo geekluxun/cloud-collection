@@ -5,6 +5,7 @@ import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @Author: luxun
@@ -13,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
  * @Other:
  */
 @Configuration
+//@ImportResource(locations = {
+//         "classpath:spring/zipkin-dubbo.xml",
+//})
 public class DubboConfig {
 
     @Bean

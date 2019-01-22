@@ -41,9 +41,10 @@ import java.util.Map;
 @Slf4j
 public class HomeController {
 
-    @Reference
+    @Reference(filter = "tracing")
+    //@Reference
     TestService testService;
-    @Reference
+    @Reference(filter = "tracing")
     IdService idService;
 
 
@@ -136,8 +137,11 @@ public class HomeController {
     }
 
     @RequestMapping("/dubbo")
-    public void dubbo() {
+    @ResponseBody
+    public Object dubbo() {
         testService.test();
+        return "OK";
     }
+    
 
 }
