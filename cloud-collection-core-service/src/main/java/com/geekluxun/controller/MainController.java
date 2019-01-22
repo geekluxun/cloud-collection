@@ -1,13 +1,14 @@
 package com.geekluxun.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,25 +22,28 @@ import java.util.Map;
  * @Others:
  */
 
-@RestController
+@Controller
+@RequestMapping("/main")
 @RefreshScope
+@Slf4j
 public class MainController {
     @Value("${server.port}")
     private String port;
 
     @Value("${server.name}")
     private String name;
-
-    Logger logger = LoggerFactory.getLogger(getClass());
-
-    @RequestMapping("test")
+    
+    @Autowired
+    private RestTemplate restTemplate;
+    
+    @PostMapping("/coreServiceTest1")
     @ResponseBody
     public Object test() {
         Map response = new HashMap(10);
-        logger.info("test cloud collection core service");
-        logger.debug("hello debug!!!");
+        log.info("test cloud collection core service");
 
-
+        String response2 = restTemplate.postForObject("http://localhost:8082/main/userServiceTest1", new HashMap<>(), String.class);
+        log.info("response2:" + response2);
         response.put("code", "111333");
         response.put("msg", "success");
         return response;
@@ -48,7 +52,7 @@ public class MainController {
     @RequestMapping("hello")
     @ResponseBody
     public Object hello(@RequestBody Map requestPara) {
-        logger.info("helloword! name:"
+        log.info("helloword! name:"
                 + requestPara.get("name")
                 + " age:"
                 + requestPara.get("age")

@@ -5,8 +5,14 @@ import com.alibaba.fastjson.JSON;
 import com.geekluxun.demo.thymeleaf.entity.Knowledge;
 import com.geekluxun.service.IdService;
 import com.geekluxun.service.TestService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +37,8 @@ import java.util.Map;
  */
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
+@Slf4j
 public class HomeController {
 
     @Reference
@@ -39,10 +46,18 @@ public class HomeController {
     @Reference
     IdService idService;
 
-    Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    private CloseableHttpClient httpClient;
+
+    @Autowired
+    private RequestConfig requestConfig;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
 
-    @RequestMapping("/")
+    @RequestMapping("/knowledge")
     public String home(HttpServletRequest request, HttpServletResponse response, Model model) {
 
         Knowledge knowledge = new Knowledge();
@@ -63,24 +78,52 @@ public class HomeController {
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("luxun");
-        logger.info("luxun");
+        log.info("luxun");
         return "index";
     }
 
 
-    @RequestMapping("core")
+    @RequestMapping("/core1")
     @ResponseBody
-    public Object testCoreSevie() {
-        String coreServieUrl = "http://cloud-collection-core-service.local/test";
-        Map response = new HashMap(10);
-        logger.info("core service test!!!");
+    public Object testCoreService() {
+        //String coreServieUrl = "http://cloud-collection-core-service:8078/main/coreServiceTest1";
+        /**
+         * 如果使用本地局部变量实例化一个RestTemplate ，域名是localhost，而如果使用负载均衡过的RestTemplate的，请参照SpringConfig中说明！！！
+         */
+        String coreServieUrl = "http://localhost:8078/main/coreServiceTest1";
+        //RestTemplate restTemplate = new RestTemplate();
 
-        RestTemplate restTemplate = new RestTemplate();
+        Map response = new HashMap(10);
         Object response2 = restTemplate.postForObject(coreServieUrl, null, Object.class);
 
         response.put("code", "111888");
         response.put("msg", "success");
         response.put("data", JSON.toJSONString(response2));
+        return response;
+    }
+
+    @RequestMapping("/core2")
+    @ResponseBody
+    public Object testCoreService2() throws Exception {
+
+        String coreServieUrl = "http://localhost:8078/main/coreServiceTest1";
+        Map response = new HashMap(10);
+
+        HttpPost post = new HttpPost(coreServieUrl);
+        HttpResponse httpResponse = httpClient.execute(post);
+        HttpEntity entity;
+        String responseBody = "";
+        if (httpResponse.getStatusLine().getStatusCode() == 200) {
+            log.info("响应成功....");
+            entity = httpResponse.getEntity();
+            responseBody = EntityUtils.toString(entity);
+        } else {
+            log.error("响应失败....");
+        }
+
+        response.put("code", "111888");
+        response.put("msg", "success");
+        response.put("data", responseBody);
         return response;
     }
 

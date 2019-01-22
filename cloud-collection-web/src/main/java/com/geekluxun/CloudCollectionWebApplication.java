@@ -34,10 +34,5 @@ public class CloudCollectionWebApplication {
     public static void main(String[] args) {
         SpringApplication.run(CloudCollectionWebApplication.class, args);
     }
-
-    @Bean
-    @LoadBalanced
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+    
 }

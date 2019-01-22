@@ -6,12 +6,12 @@ spring:
     name: cloud-collection-core-service
   profiles:
     active: dev
-  zipkin:
-    base-url: http://localhost:8086
-    enabled: true
-  sleuth:
-    sampler:
-      probability: 1.0
+#  zipkin:
+#    base-url: http://localhost:8086
+#    enabled: true
+#  sleuth:
+#    sampler:
+#      probability: 1.0
 
 eureka:
   client:
