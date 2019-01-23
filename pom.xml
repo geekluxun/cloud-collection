@@ -40,6 +40,7 @@
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
         <shadingjdbc.version>3.0.0.M1</shadingjdbc.version>
         <brave.version>5.4.2</brave.version>
+        <sentinel.version>1.4.1</sentinel.version>
     </properties>
 
     <dependencies>
@@ -240,6 +241,31 @@
                 <groupId>io.zipkin.reporter2</groupId>
                 <artifactId>zipkin-sender-okhttp3</artifactId>
                 <version>2.7.3</version>
+            </dependency>
+
+            
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-core</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <!-- sentinel对Dubbo的支持-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-dubbo-adapter</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <!-- 向Sentinel控制台发送监控数据-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-transport-simple-http</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+             <!--注解的支持-->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-annotation-aspectj</artifactId>
+                <version>${sentinel.version}</version>
             </dependency>
 
         </dependencies>

@@ -1,5 +1,6 @@
 package com.geekluxun.config;
 
+import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,5 +26,15 @@ public class SpringConfig {
     //@LoadBalanced 如果加上负载均衡，通过RestTemplate调用时使用的host必须是在eureka上注册的application.name,否则报错！！！
     RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+
+    /**
+     * Sentinel注解方式需要注入此bean
+     * @return
+     */
+    @Bean
+    public SentinelResourceAspect sentinelResourceAspect() {
+        return new SentinelResourceAspect();
     }
 }

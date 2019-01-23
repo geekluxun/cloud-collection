@@ -1,5 +1,6 @@
 package com.geekluxun.config;
 
+import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -15,7 +16,16 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class SpringConfig {
     @Bean
-    public RestTemplate getRestTemplate(){
+    public RestTemplate getRestTemplate() {
         return new RestTemplate();
+    }
+
+    /**
+     * Sentinel注解方式需要注入此bean
+     * @return
+     */
+    @Bean
+    public SentinelResourceAspect sentinelResourceAspect() {
+        return new SentinelResourceAspect();
     }
 }

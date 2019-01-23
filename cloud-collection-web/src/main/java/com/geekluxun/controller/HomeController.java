@@ -15,6 +15,7 @@ import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -142,6 +143,30 @@ public class HomeController {
         testService.test();
         return "OK";
     }
-    
+
+    /**
+     * Sentinel限流框架测试
+     *
+     * @return
+     */
+    @GetMapping("/sentinel1")
+    @ResponseBody
+    public Object sentinelTest1() {
+        testService.sentinelDemo1();
+        return "OK";
+    }
+
+    /**
+     * Sentinel限流框架测试
+     *
+     * @return
+     */
+    @GetMapping("/sentinel2")
+    @ResponseBody
+    public Object sentinelTest2() {
+        testService.sentinelDemo2();
+        return "OK";
+    }
+
 
 }

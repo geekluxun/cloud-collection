@@ -13,4 +13,9 @@ public interface TestService {
      * test
      */
     void test();
+    
+    void sentinelDemo1();
+
+    void sentinelDemo2();
+    
 }
