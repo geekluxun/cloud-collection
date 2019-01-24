@@ -1,5 +1,6 @@
 package com.geekluxun.controller;
 
+import com.geekluxun.config.TestJavaConfigBean;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,15 +28,18 @@ import java.util.Map;
 @RefreshScope
 @Slf4j
 public class MainController {
-    @Value("${server.port}")
+    @Value("${server.port : 8089}")
     private String port;
 
-    @Value("${server.name}")
+    @Value("${server.name : test}")
     private String name;
     
     @Autowired
     private RestTemplate restTemplate;
     
+    @Autowired
+    private TestJavaConfigBean testJavaConfigBean;
+
     @PostMapping("/coreServiceTest1")
     @ResponseBody
     public Object test() {
@@ -49,14 +53,11 @@ public class MainController {
         return response;
     }
 
-    @RequestMapping("hello")
+    @GetMapping("/testApolloConfig")
     @ResponseBody
-    public Object hello(@RequestBody Map requestPara) {
-        log.info("helloword! name:"
-                + requestPara.get("name")
-                + " age:"
-                + requestPara.get("age")
-                + " port:" + port + "sever.name" + name);
+    public Object testApolloConfig() {
+        log.info("server.port:" + port + "server.name:" + name);
+        log.info("testJavaConfigBean:" + testJavaConfigBean);
         return "HelloWorld!!!";
     }
 }

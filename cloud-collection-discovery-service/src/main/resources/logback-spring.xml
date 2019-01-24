@@ -9,7 +9,7 @@
         </encoder>
     </appender>
     <property name="filePath" value="/data/logs"/>
-    <property name="project.name" value="cloud-collection-core-service"/>
+    <property name="project.name" value="eurka-server"/>
 
     <!-- daily rollover -->
     <appender name="rollingFileAppender"
