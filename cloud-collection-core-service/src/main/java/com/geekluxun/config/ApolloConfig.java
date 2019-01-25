@@ -1,6 +1,7 @@
 package com.geekluxun.config;
 
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
+import com.geekluxun.config.apollo.ConfigDemoBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +16,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableApolloConfig
 public class ApolloConfig {
+    
     @Bean
-    public TestJavaConfigBean javaConfigBean() {
-        return new TestJavaConfigBean();
+    public ConfigDemoBean ConfigDemoBean() {
+        return new ConfigDemoBean();
     }
 }
