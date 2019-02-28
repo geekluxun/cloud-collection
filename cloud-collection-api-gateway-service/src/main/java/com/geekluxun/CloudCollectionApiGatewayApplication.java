@@ -10,7 +10,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
  *
  * @Author: luxun
  * @Date: 2018-07-27 17:45
- * @Description:
+ * @Description: netflix系列组件已经不再维护了，生产环境不再建议使用了!!!
  * @Others:
  */
 @EnableZuulProxy
